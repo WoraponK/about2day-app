@@ -99,7 +99,7 @@ const checkType = (type: string, size: number) => {
                     height={iconSize}
                 />
             );
-        case 'ex-salary':
+        case 'ex-logo':
             return (
                 <Image
                     src="/images/a2d/expenses-logo.svg"

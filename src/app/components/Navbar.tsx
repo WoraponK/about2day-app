@@ -15,7 +15,7 @@ function Navbar() {
             <Link href={'/'}>
                 <Image
                     width={150}
-                    height={150}
+                    height={52}
                     src={'/images/logo-infog-nobg-dark.png'}
                     alt='logo'
                     className='max-lg:w-[120px]'

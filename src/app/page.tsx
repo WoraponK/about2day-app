@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <div className="grid grid-cols-[35%_65%]">
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           <IncomeTool />
           <ExpensesTool />
         </div>

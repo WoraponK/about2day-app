@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={kanit.className}>
         <div className="bg-clr-dark text-clr-light min-h-screen">
           <Navbar />
-          <main className="py-16 px-32 max-lg:px-16 max-md:px-8 min-h-screen">
+          <main className="py-16 px-32 max-lg:px-16 max-md:px-8">
             {children}
           </main>
           <Footer />

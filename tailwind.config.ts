@@ -22,6 +22,7 @@ const config: Config = {
         'clr-red': '#FF5D5D',
         'clr-orange': '#FF814B',
         'clr-yellow': '#FFBE5D',
+        'clr-accent': '#29283D'
       }
     },
   },
