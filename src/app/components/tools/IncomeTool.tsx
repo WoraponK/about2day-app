@@ -12,44 +12,44 @@ function IncomeTool() {
         <A2dIcon type='in-logo' size={35} />
         <h2 className='text-xl'>Income</h2>
       </div>
-      <div className='bg-clr-accent p-6 space-y-6 rounded-tr-xl rounded-br-xl rounded-bl-xl'>
+      <div className='bg-clr-accent p-2 space-y-4 rounded-tr-xl rounded-br-xl rounded-bl-xl'>
         <h3 className='text-center text-2xl'>Choose . . .</h3>
         <form className='flex flex-col justify-center space-y-6'>
-          <ul className='grid grid-cols-6 gap-4'>
+          <ul className='grid grid-cols-4 gap-2'>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="income" value={'foods'} id='foods' className='hidden peer' />
-              <label htmlFor="foods" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='foods'>
-                <A2dIcon type='in-foods' size={40} />
+              <input type="radio" name="income" value={'in-foods'} id='in-foods' className='hidden peer' />
+              <label htmlFor="in-foods" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='Foods'>
+                <A2dIcon type='in-foods' size={35}/>
               </label>
             </li>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="income" value={'gaming'} id='gaming' className='hidden peer' />
-              <label htmlFor="gaming" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='gaming'>
-                <A2dIcon type='in-gaming' size={40} />
+              <input type="radio" name="income" value={'in-gaming'} id='in-gaming' className='hidden peer' />
+              <label htmlFor="in-gaming" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='Gaming'>
+                <A2dIcon type='in-gaming' size={35}/>
               </label>
             </li>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="income" value={'house'} id='house' className='hidden peer' />
-              <label htmlFor="house" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='house'>
-                <A2dIcon type='in-house' size={40} />
+              <input type="radio" name="income" value={'in-house'} id='in-house' className='hidden peer' />
+              <label htmlFor="in-house" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='House'>
+                <A2dIcon type='in-house' size={35}/>
               </label>
             </li>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="income" value={'phone'} id='phone' className='hidden peer' />
-              <label htmlFor="phone" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='phone'>
-                <A2dIcon type='in-phone' size={30} />
+              <input type="radio" name="income" value={'in-phone'} id='in-phone' className='hidden peer' />
+              <label htmlFor="in-phone" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='Phone'>
+                <A2dIcon type='in-phone' size={35}/>
               </label>
             </li>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="income" value={'shopping'} id='shopping' className='hidden peer' />
-              <label htmlFor="shopping" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='shopping'>
-                <A2dIcon type='in-shopping' size={35} />
+              <input type="radio" name="income" value={'in-shopping'} id='in-shopping' className='hidden peer' />
+              <label htmlFor="in-shopping" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='Shopping'>
+                <A2dIcon type='in-shopping' size={35}/>
               </label>
             </li>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="income" value={'tools'} id='tools' className='hidden peer' />
-              <label htmlFor="tools" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='tools'>
-                <A2dIcon type='in-tools' size={35} />
+              <input type="radio" name="income" value={'in-tools'} id='in-tools' className='hidden peer' />
+              <label htmlFor="in-tools" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='Tools'>
+                <A2dIcon type='in-tools' size={35}/>
               </label>
             </li>
           </ul>

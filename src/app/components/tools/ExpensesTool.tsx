@@ -12,26 +12,26 @@ function ExpensesTool() {
         <A2dIcon type='ex-logo' size={35} />
         <h2 className='text-xl'>Expenses</h2>
       </div>
-      <div className='bg-clr-accent p-6 space-y-6 rounded-tr-xl rounded-br-xl rounded-bl-xl'>
+      <div className='bg-clr-accent p-2 space-y-4 rounded-tr-xl rounded-br-xl rounded-bl-xl'>
         <h3 className='text-center text-2xl'>Choose . . .</h3>
         <form className='flex flex-col justify-center space-y-6'>
-          <ul className='grid grid-cols-6 gap-4'>
+          <ul className='grid grid-cols-4 gap-2'>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="expenses" value={'people'} id='people' className='hidden peer' />
-              <label htmlFor="people" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='foods'>
-                <A2dIcon type='ex-people' size={40} />
+              <input type="radio" name="expenses" value={'ex-people'} id='ex-people' className='hidden peer' />
+              <label htmlFor="ex-people" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='People'>
+                <A2dIcon type='ex-people' size={35}/>
               </label>
             </li>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="expenses" value={'extra'} id='extra' className='hidden peer' />
-              <label htmlFor="extra" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='gaming'>
-                <A2dIcon type='ex-extra' size={40} />
+              <input type="radio" name="expenses" value={'ex-extra'} id='ex-extra' className='hidden peer' />
+              <label htmlFor="ex-extra" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='Extra'>
+                <A2dIcon type='ex-extra' size={35}/>
               </label>
             </li>
             <li className='flex justify-center items-center'>
-              <input type="radio" name="expenses" value={'salary'} id='salary' className='hidden peer' />
-              <label htmlFor="salary" className='cursor-pointer flex justify-center items-center h-14 w-14 bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='gaming'>
-                <A2dIcon type='ex-salary' size={40} />
+              <input type="radio" name="expenses" value={'ex-salary'} id='ex-salary' className='hidden peer' />
+              <label htmlFor="ex-salary" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title='Salary'>
+                <A2dIcon type='ex-salary' size={35}/>
               </label>
             </li>
           </ul>

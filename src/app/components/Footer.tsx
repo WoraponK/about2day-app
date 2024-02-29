@@ -6,12 +6,14 @@ function Footer() {
     return (
         <footer className='p-16 grid grid-cols-2 border-t border-clr-light/90 max-md:grid-cols-1 max-md:gap-16 max-md:px-8'>
             <div className='space-y-4 flex flex-col max-md:items-center'>
-                <Image
-                    width={75}
-                    height={75}
-                    src={'/images/symbol-nobg.png'}
-                    alt='logo'
-                />
+                <div className='h-[150px] w-[78px] relative'>
+                    <Image
+                        fill
+                        src={'/images/symbol-nobg.png'}
+                        alt='logo'
+                        objectFit='contain'
+                    />
+                </div>
                 <div className='max-md:text-center'>
                     <h2 className='text-3xl'>about2day</h2>
                     <p className='text-xl'>Copyright © 2024</p>

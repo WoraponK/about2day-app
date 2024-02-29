@@ -13,13 +13,14 @@ function Navbar() {
     return (
         <nav className='flex justify-between items-center px-16 py-6 border-b border-clr-light/90 max-lg:px-8 max-sm:py-4 sticky top-0 backdrop-blur-xl'>
             <Link href={'/'}>
-                <Image
-                    width={150}
-                    height={52}
-                    src={'/images/logo-infog-nobg-dark.png'}
-                    alt='logo'
-                    className='max-lg:w-[120px]'
-                />
+                <div className='relative max-lg:w-[120px] w-[150px] h-[50px]'>
+                    <Image
+                        fill
+                        objectFit='contain'
+                        src={'/images/logo-infog-nobg-dark.png'}
+                        alt='logo'
+                    />
+                </div>
             </Link>
             <ul className='flex items-center space-x-6 uppercase text-2xl max-md:hidden'>
                 <li className='transition-colors hover:text-clr-primary'>

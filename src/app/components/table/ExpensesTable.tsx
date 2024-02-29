@@ -4,7 +4,9 @@ import React from 'react'
 
 function ExpensesTable() {
   return (
-    <div>ExpensesTable</div>
+    <div className='bg-clr-accent'>
+
+    </div>
   )
 }
 
