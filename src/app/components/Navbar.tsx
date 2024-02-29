@@ -11,7 +11,7 @@ function Navbar() {
     const pathname = usePathname();
 
     return (
-        <nav className='flex justify-between items-center px-16 py-6 border-b border-clr-light/90 max-lg:px-8 max-sm:py-4 sticky top-0 backdrop-blur-xl'>
+        <nav className='flex justify-between items-center px-16 py-6 border-b border-clr-light/90 max-lg:px-8 max-sm:py-4 sticky top-0 backdrop-blur-xl z-50'>
             <Link href={'/'}>
                 <div className='relative max-lg:w-[120px] w-[150px] h-[50px]'>
                     <Image
