@@ -47,17 +47,17 @@ function BurgerMenu() {
                             </Link>
                         </li>
                         <li className='transition-colors hover:text-clr-secondary-2'>
-                            <Link href={'/custom'}>
-                                {pathname == '/custom' ? (
-                                    <p className='flex items-center space-x-2' title='Custom'>
+                            <Link href={'/customize'}>
+                                {pathname == '/customize' ? (
+                                    <p className='flex items-center space-x-2' title='Customize'>
                                         <i className="bi bi-brush-fill"></i>
-                                        <span>Custom</span>
+                                        <span>Customize</span>
                                     </p>
                                 )
                                     : (
-                                        <p className='flex items-center space-x-2' title='Custom'>
+                                        <p className='flex items-center space-x-2' title='Customize'>
                                             <i className="bi bi-brush"></i>
-                                            <span>Custom</span>
+                                            <span>Customize</span>
                                         </p>
                                     )
                                 }

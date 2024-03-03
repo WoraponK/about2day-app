@@ -20,20 +20,26 @@ function Footer() {
                 </div>
             </div>
             <div className='flex justify-between'>
-                <ul className='flex flex-col space-y-2 text-xl uppercase'>
-                    <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/'}>Home</Link>
-                    </li>
-                    <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/overall'}>Overall</Link>
-                    </li>
-                    <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/setting'}>Setting</Link>
-                    </li>
-                    <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/about'}>About</Link>
-                    </li>
-                </ul>
+                <div className='space-y-2'>
+                    <h2 className='text-2xl text-clr-light/90'>Navigators</h2>
+                    <ul className='flex flex-col space-y-2 text-xl uppercase ml-2'>
+                        <li className='transition-colors hover:text-clr-primary'>
+                            <Link href={'/'}>Home</Link>
+                        </li>
+                        <li className='transition-colors hover:text-clr-primary'>
+                            <Link href={'/customize'}>Customize</Link>
+                        </li>
+                        <li className='transition-colors hover:text-clr-primary'>
+                            <Link href={'/overall'}>Overall</Link>
+                        </li>
+                        <li className='transition-colors hover:text-clr-primary'>
+                            <Link href={'/setting'}>Setting</Link>
+                        </li>
+                        <li className='transition-colors hover:text-clr-primary'>
+                            <Link href={'/about'}>About</Link>
+                        </li>
+                    </ul>
+                </div>
                 <div className='flex flex-col space-y-4'>
                     <div className='flex flex-col space-y-1'>
                         <h2 className='text-2xl text-clr-light/90'>Support me</h2>

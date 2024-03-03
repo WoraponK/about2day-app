@@ -73,14 +73,14 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/custom'}>
-                            {pathname == '/custom' ? (
-                                <p className='flex items-center space-x-2' title='Custom'>
+                        <Link href={'/customize'}>
+                            {pathname == '/customize' ? (
+                                <p className='flex items-center space-x-2' title='Customize'>
                                     <i className="bi bi-brush-fill"></i>
                                 </p>
                             )
                                 : (
-                                    <p className='flex items-center space-x-2' title='Custom'>
+                                    <p className='flex items-center space-x-2' title='Customize'>
                                         <i className="bi bi-brush"></i>
                                     </p>
                                 )
