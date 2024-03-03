@@ -13,7 +13,7 @@ interface Expenses {
   date: string;
 }
 
-function expensesTool() {
+function ExpensesTool() {
   const [expenses, setExpenses] = useState<Expenses[]>([]);
   const [selected, setSelected] = useState('');
   const [amount, setAmount] = useState('');
@@ -193,4 +193,4 @@ function expensesTool() {
   )
 }
 
-export default expensesTool
+export default ExpensesTool
