@@ -68,28 +68,40 @@ function IncomeTable() {
           {income.length > 0 ? (
             showAll ? (
               income.map((data) => (
-                <div key={data.id} className='grid grid-cols-3 justify-items-center space-y-1'>
-                  <div className='flex space-x-2'>
-                    <div className='relative object w-auto h-auto flex justify-center items-center'>
-                      <A2dIcon type={data.type} size={20} />
+                <div key={data.id} className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'>
+                  <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
+                    <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                     </div>
-                    <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
                   </div>
-                  <p>{formatDate(data.date)}</p>
-                  <p>{data.amount}฿</p>
+                  <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
+                    <div className='flex space-x-2'>
+                      <div className='relative object flex justify-center items-center'>
+                        <A2dIcon type={data.type} size={20} />
+                      </div>
+                      <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
+                    </div>
+                    <p>{formatDate(data.date)}</p>
+                    <p>{data.amount}฿</p>
+                  </div>
                 </div>
               ))
             ) : (
               income.slice(0, 15).map((data) => (
-                <div key={data.id} className='grid grid-cols-3 justify-items-center space-y-1'>
-                  <div className='flex space-x-2'>
-                    <div className='relative object flex justify-center items-center'>
-                      <A2dIcon type={data.type} size={20} />
+                <div key={data.id} className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'>
+                  <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
+                    <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                     </div>
-                    <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
                   </div>
-                  <p>{formatDate(data.date)}</p>
-                  <p>{data.amount}฿</p>
+                  <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
+                    <div className='flex space-x-2'>
+                      <div className='relative object flex justify-center items-center'>
+                        <A2dIcon type={data.type} size={20} />
+                      </div>
+                      <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
+                    </div>
+                    <p>{formatDate(data.date)}</p>
+                    <p>{data.amount}฿</p>
+                  </div>
                 </div>
               ))
             )) : (
