@@ -14,20 +14,19 @@ interface Income {
 
 function IncomeTable() {
   const [income, setIncome] = useState<Income[]>([]);
-  const [showAll, setShowAll] = useState(false)
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    try {
-      const storedIncome = localStorage.getItem('income')
-
-      if (storedIncome) {
-        setIncome(JSON.parse(storedIncome) as Income[])
-
-      }
-    } catch (e) {
-      console.error(e);
+    const storedIncome = localStorage.getItem('income');
+    if (storedIncome) {
+      setIncome(JSON.parse(storedIncome) as Income[]);
     }
-  }, [])
+  }, []);
+
+
+  const handleShowAllClick = () => {
+    setShowAll((prevShowAll) => !prevShowAll)
+  }
 
   const totalAmount = income.reduce((acc, item) => acc + item.amount, 0)
 
@@ -39,22 +38,17 @@ function IncomeTable() {
 
   const convertTypeToName = (type: string) => {
     switch (type) {
-      case 'in-foods':
-        return 'Foods'
-      case 'in-gaming':
-        return 'Gaming'
-      case 'in-shopping':
-        return 'Shopping'
-      case 'in-tools':
-        return 'Tools'
-      case 'in-house':
-        return 'House'
-      case 'in-phone':
-        return 'Phone'
+      case 'in-people':
+        return 'People'
+      case 'in-salary':
+        return 'Salary'
+      case 'in-extra':
+        return 'Extra'
       default:
         return 'Null'
     }
   }
+
 
   return (
     <div className='flex flex-col'>
@@ -76,7 +70,7 @@ function IncomeTable() {
               income.map((data) => (
                 <div key={data.id} className='grid grid-cols-3 justify-items-center space-y-1'>
                   <div className='flex space-x-2'>
-                    <div className='relative object flex justify-center items-center'>
+                    <div className='relative object w-auto h-auto flex justify-center items-center'>
                       <A2dIcon type={data.type} size={20} />
                     </div>
                     <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
@@ -105,7 +99,7 @@ function IncomeTable() {
             {!showAll && income.length > 15 && (
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
-                onClick={() => setShowAll(true)}
+                onClick={handleShowAllClick}
               >
                 Show All <span className='text-sm'>({income.length} rows)</span>
               </p>
@@ -114,7 +108,7 @@ function IncomeTable() {
             {showAll && (
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
-                onClick={() => setShowAll(false)}
+                onClick={handleShowAllClick}
               >
                 Show Less
               </p>
@@ -124,6 +118,7 @@ function IncomeTable() {
       </div>
     </div>
   )
+
 }
 
 export default IncomeTable

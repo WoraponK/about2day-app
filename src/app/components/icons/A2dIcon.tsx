@@ -9,97 +9,96 @@ const checkType = (type: string, size: number) => {
     const iconSize = checkSize(size);
 
     switch (type) {
-        case 'in-foods':
+        case 'ex-foods':
             return (
                 <Image
-                    src="/images/a2d/income-foods.svg"
-                    alt="in-foods"
+                    src="/images/a2d/expenses-foods.svg"
+                    alt="ex-foods"
                     width={iconSize}
                     height={iconSize}
                 />
             );
-        case 'in-tools':
+        case 'ex-tools':
             return (
                 <Image
-                    src="/images/a2d/income-tools.svg"
-                    alt="in-tools"
+                    src="/images/a2d/expenses-tools.svg"
+                    alt="ex-tools"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
-        case 'in-gaming':
+        case 'ex-gaming':
             return (
                 <Image
-                    src="/images/a2d/income-gaming.svg"
-                    alt="in-gaming"
+                    src="/images/a2d/expenses-gaming.svg"
+                    alt="ex-gaming"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
-        case 'in-shopping':
+        case 'ex-shopping':
             return (
                 <Image
-                    src="/images/a2d/income-shopping.svg"
-                    alt="in-shopping"
+                    src="/images/a2d/expenses-shopping.svg"
+                    alt="ex-shopping"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
-        case 'in-phone':
+        case 'ex-phone':
             return (
                 <Image
-                    src="/images/a2d/income-phone.svg"
-                    alt="in-phone"
+                    src="/images/a2d/expenses-phone.svg"
+                    alt="ex-phone"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
-        case 'in-house':
+        case 'ex-house':
             return (
                 <Image
-                    src="/images/a2d/income-house.svg"
-                    alt="in-house"
+                    src="/images/a2d/expenses-house.svg"
+                    alt="ex-house"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
-        case 'ex-extra':
+        case 'in-extra':
             return (
                 <Image
-                    src="/images/a2d/expenses-extra.svg"
-                    alt="ex-extra"
+                    src="/images/a2d/income-extra.svg"
+                    alt="in-extra"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
-        case 'ex-people':
+        case 'in-people':
             return (
                 <Image
-                    src="/images/a2d/expenses-people.svg"
-                    alt="ex-people"
+                    src="/images/a2d/income-people.svg"
+                    alt="in-people"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
-        case 'ex-salary':
+        case 'in-salary':
             return (
                 <Image
-                    src="/images/a2d/expenses-salary.svg"
-                    alt="ex-salary"
+                    src="/images/a2d/income-salary.svg"
+                    alt="in-salary"
                     width={iconSize}
                     height={iconSize}
                 />
+
             );
         case 'in-logo':
-            return (
-                <Image
-                    src="/images/a2d/income-logo.svg"
-                    alt="in-logo"
-                    width={iconSize}
-                    height={iconSize}
-                />
-            );
-        case 'ex-logo':
             return (
                 <Image
                     src="/images/a2d/expenses-logo.svg"
@@ -107,6 +106,17 @@ const checkType = (type: string, size: number) => {
                     width={iconSize}
                     height={iconSize}
                 />
+
+            );
+        case 'ex-logo':
+            return (
+                <Image
+                    src="/images/a2d/income-logo.svg"
+                    alt="in-logo"
+                    width={iconSize}
+                    height={iconSize}
+                />
+
             );
         default:
             return null;

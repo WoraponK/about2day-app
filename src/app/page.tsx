@@ -10,8 +10,14 @@ import IncomeTool from "./components/tool/IncomeTool";
 import IncomeTable from "./components/table/IncomeTable";
 
 export default function Home() {
+
   useEffect(() => {
     document.title = "Home - about2day"
+
+    const checkLanguage = localStorage.getItem("language");
+    if (!checkLanguage) {
+      localStorage.setItem("language", "en")
+    }
   }, [])
 
   return (
