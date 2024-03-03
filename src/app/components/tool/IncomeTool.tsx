@@ -47,7 +47,7 @@ function IncomeTool() {
     location.reload();
   }
   return (
-    <div className='grid grid-cols-1'>
+    <div className='grid grid-cols-1 place-self-end max-sm:w-full'>
       <div className='bg-clr-primary flex items-center space-x-2 py-2 px-4 w-3/4 rounded-t-xl'>
         <A2dIcon type='in-logo' size={35} />
         <h2 className='text-xl'>Income</h2>

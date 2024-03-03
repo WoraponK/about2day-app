@@ -10,10 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         'clr-primary': '#865DFF',
+        'clr-primary/60': '#865DFF60',
         'clr-secondary-1': '#E384FF',
         'clr-secondary-2': '#FFA3FD',
         'clr-dark': '#191825',
         'clr-light': '#F0E9D2',
+        'clr-light/40': '#F0E9D240',
         'clr-light/75': '#F0E9D275',
         'clr-light/90': '#F0E9D290',
         'clr-gray-1': '#1E1E1E',

@@ -47,7 +47,7 @@ function ExpensesTool() {
   }
 
   return (
-    <div className='grid grid-cols-1'>
+    <div className='grid grid-cols-1 h-fit'>
       <div className='bg-clr-primary flex items-center space-x-2 py-2 px-4 w-3/4 rounded-t-xl'>
         <div className='relative object w-auto h-auto flex justify-center items-center'>
           <A2dIcon type='ex-logo' size={35} />
