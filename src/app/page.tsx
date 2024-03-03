@@ -22,8 +22,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="grid grid-cols-[35%_65%] space-x-4">
-        <div className="flex flex-col space-y-4">
+      <div className="grid grid-cols-[35%_65%] space-x-4 max-md:grid-cols-1 max-md:space-x-0 max-md:space-y-8">
+        <div className="flex flex-col space-y-4 max-md:flex-row max-md:space-y-0 max-md:space-x-4 max-sm:flex-col max-sm:space-x-0 max-sm:space-y-4">
           <IncomeTool />
           <ExpensesTool />
         </div>
