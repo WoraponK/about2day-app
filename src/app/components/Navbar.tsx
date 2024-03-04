@@ -16,13 +16,15 @@ interface BurgerType {
 
 export const BurgerContext = createContext<BurgerType>({
     isBurger: false,
-    setIsBurger: () => {},
+    setIsBurger: () => { },
 });;
 
 function Navbar() {
     const pathname = usePathname();
     const [isNavHidden, setIsNavHidden] = useState(false);
     const [isBurger, setIsBurger] = useState(false);
+    const [language, setLanguage] = useState(localStorage.getItem('language'));
+
 
     useEffect(() => {
         const prevScorllPos = window.scrollY;
@@ -60,12 +62,16 @@ function Navbar() {
                     <li className='transition-colors hover:text-clr-primary'>
                         <Link href={'/'}>
                             {pathname == '/' ? (
-                                <p className='flex items-center space-x-2' title='Home'>
+                                <p className='flex items-center space-x-2' title={language === 'en'
+                                    ? 'Home'
+                                    : 'หน้าหลัก'}>
                                     <i className="bi bi-house-fill"></i>
                                 </p>
                             )
                                 : (
-                                    <p className='flex items-center space-x-2' title='Home'>
+                                    <p className='flex items-center space-x-2' title={language === 'en'
+                                    ? 'Home'
+                                    : 'หน้าหลัก'}>
                                         <i className="bi bi-house"></i>
                                     </p>
                                 )
@@ -75,13 +81,17 @@ function Navbar() {
                     <li className='transition-colors hover:text-clr-primary'>
                         <Link href={'/customize'}>
                             {pathname == '/customize' ? (
-                                <p className='flex items-center space-x-2' title='Customize'>
-                                    <i className="bi bi-brush-fill"></i>
+                                <p className='flex items-center space-x-2' title={language === 'en'
+                                ? 'Customize'
+                                : 'สร้างเอง'}>
+                                    <i className="bi bi-database-fill"></i>
                                 </p>
                             )
                                 : (
-                                    <p className='flex items-center space-x-2' title='Customize'>
-                                        <i className="bi bi-brush"></i>
+                                    <p className='flex items-center space-x-2' title={language === 'en'
+                                    ? 'Customize'
+                                    : 'สร้างเอง'}>
+                                        <i className="bi bi-database"></i>
                                     </p>
                                 )
                             }
@@ -90,13 +100,17 @@ function Navbar() {
                     <li className='transition-colors hover:text-clr-primary'>
                         <Link href={'/overall'}>
                             {pathname == '/overall' ? (
-                                <p className='flex items-center space-x-2' title='Overall'>
+                                <p className='flex items-center space-x-2' title={language === 'en'
+                                ? 'Overall'
+                                : 'โดยรวม'}>
                                     <i className="bi bi-calendar3-range-fill"></i>
 
                                 </p>
                             )
                                 : (
-                                    <p className='flex items-center space-x-2' title='Overall'>
+                                    <p className='flex items-center space-x-2' title={language === 'en'
+                                    ? 'Overall'
+                                    : 'โดยรวม'}>
                                         <i className="bi bi-calendar3-range"></i>
                                     </p>
                                 )
@@ -106,12 +120,16 @@ function Navbar() {
                     <li className='transition-colors hover:text-clr-primary'>
                         <Link href={'/setting'}>
                             {pathname == '/setting' ? (
-                                <p className='flex items-center space-x-2' title='Setting'>
+                                <p className='flex items-center space-x-2' title={language === 'en'
+                                ? 'Setting'
+                                : 'ตั้งค่า'}>
                                     <i className="bi bi-gear-fill"></i>
                                 </p>
                             )
                                 : (
-                                    <p className='flex items-center space-x-2' title='Setting'>
+                                    <p className='flex items-center space-x-2' title={language === 'en'
+                                    ? 'Setting'
+                                    : 'ตั้งค่า'}>
                                         <i className="bi bi-gear"></i>
                                     </p>
                                 )
@@ -121,13 +139,17 @@ function Navbar() {
                     <li className='transition-colors hover:text-clr-primary'>
                         <Link href={'/about'}>
                             {pathname == '/about' ? (
-                                <p className='flex items-center space-x-2' title='About'>
+                                <p className='flex items-center space-x-2' title={language === 'en'
+                                ? 'About'
+                                : 'เกี่ยวกับ'}>
                                     <i className="bi bi-info-circle-fill"></i>
 
                                 </p>
                             )
                                 : (
-                                    <p className='flex items-center space-x-2' title='About'>
+                                    <p className='flex items-center space-x-2' title={language === 'en'
+                                    ? 'About'
+                                    : 'เกี่ยวกับ'}>
                                         <i className="bi bi-info-circle"></i>
                                     </p>
                                 )

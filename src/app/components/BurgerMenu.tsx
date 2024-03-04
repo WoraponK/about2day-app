@@ -50,13 +50,13 @@ function BurgerMenu() {
                             <Link href={'/customize'}>
                                 {pathname == '/customize' ? (
                                     <p className='flex items-center space-x-2' title='Customize'>
-                                        <i className="bi bi-brush-fill"></i>
+                                        <i className="bi bi-database-fill"></i>
                                         <span>Customize</span>
                                     </p>
                                 )
                                     : (
                                         <p className='flex items-center space-x-2' title='Customize'>
-                                            <i className="bi bi-brush"></i>
+                                            <i className="bi bi-database"></i>
                                             <span>Customize</span>
                                         </p>
                                     )
