@@ -25,13 +25,13 @@ export default function Home() {
       const l = localStorage.getItem('language');
       if (l) {
         setLanguage(l);
+        document.title = `${l === 'en' ? 'Home' : 'หน้าหลัก'} - about2day`
       }
     }
 
     defaultLanguage();
     languageCheck();
     
-    document.title = `${language === 'en' ? 'Home' : 'หน้าหลัก'} - about2day`
   }, [])
 
   return (

@@ -10,11 +10,11 @@ function SettingPage() {
       const l = localStorage.getItem('language');
       if (l) {
         setLanguage(l);
+        document.title = `${l === 'en' ? 'Setting': 'ตั้งค่า'} - about2day`
       }
     }
 
     languageCheck();
-    document.title = `${language === 'en' ? 'Setting': 'ตั้งค่า'} - about2day`
   }, [])
 
   const handleLanguageChange = (e) => {

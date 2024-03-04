@@ -10,10 +10,10 @@ function AboutPage() {
       const l = localStorage.getItem('language');
       if (l) {
         setLanguage(l);
+        document.title = `${l === 'en' ? 'About' : 'เกี่ยวกับ'} - about2day`
       }
     }
     languageCheck();
-    document.title = `${language === 'en' ? 'About' : 'เกี่ยวกับ'} - about2day`
   }, [])
 
   return (
