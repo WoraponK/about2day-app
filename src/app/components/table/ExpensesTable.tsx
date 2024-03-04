@@ -5,6 +5,8 @@ import moment from 'moment';
 
 import A2dIcon from '../icons/A2dIcon'
 
+import LanguageSwap from '../LanguageSwap';
+
 interface Expenses {
   id: string;
   type: string;
@@ -16,10 +18,16 @@ function ExpensesTable() {
   const [expenses, setExpenses] = useState<Expenses[]>([]);
   const [showAll, setShowAll] = useState(false);
 
+
   useEffect(() => {
     const storedExpenses = localStorage.getItem('expenses');
     if (storedExpenses) {
-      setExpenses(JSON.parse(storedExpenses) as Expenses[]);
+      try {
+        const parsedExpenses = JSON.parse(storedExpenses);
+        setExpenses(parsedExpenses);
+      } catch (error) {
+        console.error('Error parsing stored expenses:', error);
+      }
     }
   }, []);
 
@@ -39,19 +47,19 @@ function ExpensesTable() {
   const convertTypeToName = (type: string) => {
     switch (type) {
       case 'ex-foods':
-        return 'Foods'
+        return <LanguageSwap en='Foods' th='อาหาร' />
       case 'ex-gaming':
-        return 'Gaming'
+        return <LanguageSwap en='Gaming' th='เกม' />
       case 'ex-shopping':
-        return 'Shopping'
+        return <LanguageSwap en='Shopping' th='ช็อปปิ้ง' />
       case 'ex-tools':
-        return 'Tools'
+        return <LanguageSwap en='Tools' th='เครื่องมือ' />
       case 'ex-house':
-        return 'House'
+        return <LanguageSwap en='House' th='บ้าน' />
       case 'ex-phone':
-        return 'Phone'
+        return <LanguageSwap en='Phone' th='มือถือ' />
       default:
-        return 'Null'
+        return <LanguageSwap en='Null' th='ว่าง' />
     }
   }
 
@@ -60,15 +68,22 @@ function ExpensesTable() {
     <div className='flex flex-col'>
       <div className='flex items-center space-x-4'>
         <div className='bg-clr-light text-clr-dark py-1 px-4 w-fit rounded-t-xl font-semibold'>
-          Expenses
+          <LanguageSwap en='Expenses' th='รายจ่าย' />
         </div>
-        <h2 className='font-semibold text-xl text-clr-secondary-2'><span className='text-sm uppercase'>total</span> {totalAmount.toFixed(2)}฿</h2>
+        <h2 className='font-semibold text-xl text-clr-secondary-2'><span className='text-sm uppercase'><LanguageSwap en='Total' th='รวม' />
+        </span> {totalAmount.toFixed(2)}฿</h2>
       </div>
       <div className='bg-clr-accent h-fit rounded-r-xl rounded-bl-xl p-2'>
         <div className='grid grid-cols-3 justify-items-center pb-2 border-b border-clr-light/90 font-semibold'>
-          <h2>Type</h2>
-          <h2>Date</h2>
-          <h2>Price</h2>
+          <h2>
+            <LanguageSwap en='Type' th='ชนิด' />
+          </h2>
+          <h2>
+            <LanguageSwap en='Date' th='วันที่' />
+          </h2>
+          <h2>
+            <LanguageSwap en='Amount' th='ราคา' />
+          </h2>
         </div>
         <div className='pt-2 space-y-0'>
           {expenses.length > 0 ? (
@@ -111,7 +126,9 @@ function ExpensesTable() {
                 </div>
               ))
             )) : (
-            <p className='text-center'>No Expenses Yet.</p>
+            <p className='text-center'>
+              <LanguageSwap en='No Expenses Yet.' th='ไม่มีข้อมูลรายจ่าย'/>
+            </p>
           )}
           <div className='pt-4'>
             {!showAll && expenses.length > 15 && (
@@ -119,7 +136,7 @@ function ExpensesTable() {
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
-                Show All <span className='text-sm'>({expenses.length} rows)</span>
+                <LanguageSwap en='Show all' th='แสดงทั้งหมด'/> <span className='text-sm'>({expenses.length} <LanguageSwap en='rows' th='แถว'/>)</span>
               </p>
             )}
 
@@ -128,7 +145,7 @@ function ExpensesTable() {
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
-                Show Less
+                <LanguageSwap en='Show less' th='แสดงลดลง'/>
               </p>
             )}
           </div>

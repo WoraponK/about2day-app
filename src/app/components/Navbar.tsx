@@ -1,12 +1,12 @@
 'use client'
 
-import React, { useEffect, useState, createContext } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import React, { useEffect, useState, createContext } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
-import HowBoutDayButton from './buttons/HowBoutDayButton'
-
+import HowBoutDayButton from './buttons/HowBoutDayButton';
+import LanguageSwap from './LanguageSwap';
 import BurgerMenu from "./BurgerMenu";
 
 interface BurgerType {
@@ -62,16 +62,19 @@ function Navbar() {
                     <li className='transition-colors hover:text-clr-primary'>
                         <Link href={'/'}>
                             {pathname == '/' ? (
-                                <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Home'
-                                    : 'หน้าหลัก'}>
+                                <p
+                                    className='flex items-center space-x-2'
+                                    title={language === 'en'
+                                        ? 'Home'
+                                        : 'หน้าหลัก'}
+                                >
                                     <i className="bi bi-house-fill"></i>
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Home'
-                                    : 'หน้าหลัก'}>
+                                        ? 'Home'
+                                        : 'หน้าหลัก'}>
                                         <i className="bi bi-house"></i>
                                     </p>
                                 )
@@ -82,15 +85,15 @@ function Navbar() {
                         <Link href={'/customize'}>
                             {pathname == '/customize' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
-                                ? 'Customize'
-                                : 'สร้างเอง'}>
+                                    ? 'Customize'
+                                    : 'ของฉัน'}>
                                     <i className="bi bi-database-fill"></i>
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Customize'
-                                    : 'สร้างเอง'}>
+                                        ? 'Customize'
+                                        : 'ของฉัน'}>
                                         <i className="bi bi-database"></i>
                                     </p>
                                 )
@@ -101,16 +104,16 @@ function Navbar() {
                         <Link href={'/overall'}>
                             {pathname == '/overall' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
-                                ? 'Overall'
-                                : 'โดยรวม'}>
+                                    ? 'Overall'
+                                    : 'โดยรวม'}>
                                     <i className="bi bi-calendar3-range-fill"></i>
 
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Overall'
-                                    : 'โดยรวม'}>
+                                        ? 'Overall'
+                                        : 'โดยรวม'}>
                                         <i className="bi bi-calendar3-range"></i>
                                     </p>
                                 )
@@ -121,15 +124,15 @@ function Navbar() {
                         <Link href={'/setting'}>
                             {pathname == '/setting' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
-                                ? 'Setting'
-                                : 'ตั้งค่า'}>
+                                    ? 'Setting'
+                                    : 'ตั้งค่า'}>
                                     <i className="bi bi-gear-fill"></i>
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Setting'
-                                    : 'ตั้งค่า'}>
+                                        ? 'Setting'
+                                        : 'ตั้งค่า'}>
                                         <i className="bi bi-gear"></i>
                                     </p>
                                 )
@@ -140,16 +143,16 @@ function Navbar() {
                         <Link href={'/about'}>
                             {pathname == '/about' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
-                                ? 'About'
-                                : 'เกี่ยวกับ'}>
+                                    ? 'About'
+                                    : 'เกี่ยวกับ'}>
                                     <i className="bi bi-info-circle-fill"></i>
 
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'About'
-                                    : 'เกี่ยวกับ'}>
+                                        ? 'About'
+                                        : 'เกี่ยวกับ'}>
                                         <i className="bi bi-info-circle"></i>
                                     </p>
                                 )

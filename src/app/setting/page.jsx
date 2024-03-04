@@ -6,12 +6,13 @@ function SettingPage() {
   const [language, setLanguage] = useState(localStorage.getItem('language'));
 
   useEffect(() => {
-    document.title = "Setting - about2day"
+    document.title = `${language === 'en' ? 'Setting': 'ตั้งค่า'} - about2day`
   }, [])
 
-  const handleLanguageChange = (e: any) => {
+  const handleLanguageChange = (e) => {
     setLanguage(e.target.value);
     localStorage.setItem('language', e.target.value);
+    location.reload();
   }
 
   const LanguageSettingBox = () => (
@@ -29,7 +30,7 @@ function SettingPage() {
               checked={language === 'en'}
               onChange={handleLanguageChange}
             />
-            <label htmlFor="english" className='btn text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'English' : 'อังกฤษ'}>
+            <label htmlFor="english" className='btn text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'>
               <span>{language === 'en' ? 'English' : 'อังกฤษ'}</span>
             </label>
           </li>
@@ -43,7 +44,7 @@ function SettingPage() {
               checked={language === 'th'}
               onChange={handleLanguageChange}
             />
-            <label htmlFor="thai" className='btn text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'Thai' : 'ไทย'}>
+            <label htmlFor="thai" className='btn text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'>
               <span>{language === 'en' ? 'Thai' : 'ไทย'}</span>
             </label>
           </li>
@@ -58,28 +59,28 @@ function SettingPage() {
       <button onClick={() => document.getElementById('my_modal_2').showModal()} className='btn text-clr-light bg-clr-red transition-colors hover:bg-clr-red/90'>
         {language === 'en'
           ? 'Delelete All Data'
-          : 'ลบข้อมูลทั้งหมด'}
+          : 'ล้างข้อมูลทั้งหมด'}
       </button>
       <dialog id="my_modal_2" className="modal">
-        <div className="modal-box">
+        <div className="modal-box bg-clr-gray-1/70">
           <h3 className="font-bold text-2xl text-center">
             {language === 'en'
               ? 'Want to delete all data ?'
-              : 'ต้องการลบข้อมูลทั้งหมดใช่หรือไม่ ?'}
+              : 'ต้องการล้างข้อมูลทั้งหมดใช่หรือไม่ ?'}
           </h3>
           <p className="py-4 text-center">
             {language === 'en'
-              ? 'If you have done this, It will not be possible to revert your income and expenses data.'
-              : 'ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูล รายรับ-รายจ่าย กลับมาได้'}
+              ? 'If you have done this, It will not be possible to revert your "income and expenses" data.'
+              : 'ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูล "รายรับ-รายจ่าย" กลับมาได้'}
           </p>
           <div className="modal-action">
             <form method="dialog" className='space-x-2'>
-              <button onClick={handleDeleteAllSubmit} className="btn text-clr-light bg-clr-primary hover:bg-clr-primary/80">
+              <button onClick={handleDeleteAllSubmit} className="btn border-none text-clr-light bg-clr-primary hover:bg-clr-primary/80">
                 {language === 'en'
                   ? 'Sure'
                   : 'ยืนยัน'}
               </button>
-              <button className="btn text-clr-light bg-clr-red hover:bg-clr-red/80">
+              <button className="btn border-none text-clr-light bg-clr-red hover:bg-clr-red/80">
                 {language === 'en'
                   ? 'Cancel'
                   : 'ยกเลิก'}

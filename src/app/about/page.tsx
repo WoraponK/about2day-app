@@ -1,12 +1,13 @@
 'use client'
 
-import React from 'react'
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function AboutPage() {
-    useEffect(() => {
-        document.title = "About - about2day"
-      }, [])
+  const [language, setLanguage] = useState(localStorage.getItem('language'));
+
+  useEffect(() => {
+    document.title = `${language === 'en' ? 'About' : 'เกี่ยวกับ'} - about2day`
+  }, [])
 
   return (
     <div>AboutPage</div>

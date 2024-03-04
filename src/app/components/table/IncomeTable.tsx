@@ -5,6 +5,8 @@ import moment from 'moment';
 
 import A2dIcon from '../icons/A2dIcon'
 
+import LanguageSwap from '../LanguageSwap';
+
 interface Income {
   id: string;
   type: string;
@@ -39,13 +41,14 @@ function IncomeTable() {
   const convertTypeToName = (type: string) => {
     switch (type) {
       case 'in-people':
-        return 'People'
+        return <LanguageSwap en='People' th='คน' />
+
       case 'in-salary':
-        return 'Salary'
+        return <LanguageSwap en='Salary' th='เงินเดือน' />
       case 'in-extra':
-        return 'Extra'
+        return <LanguageSwap en='Extra' th='พิเศษ' />
       default:
-        return 'Null'
+        return <LanguageSwap en='Null' th='ว่าง' />
     }
   }
 
@@ -54,15 +57,21 @@ function IncomeTable() {
     <div className='flex flex-col'>
       <div className='flex items-center space-x-4'>
         <div className='bg-clr-light text-clr-dark py-1 px-4 w-fit rounded-t-xl font-semibold'>
-          Income
+          <LanguageSwap en='Income' th='รายรับ' />
         </div>
-        <h2 className='font-semibold text-xl text-clr-secondary-2'><span className='text-sm uppercase'>total</span> {totalAmount.toFixed(2)}฿</h2>
+        <h2 className='font-semibold text-xl text-clr-secondary-2'><span className='text-sm uppercase'><LanguageSwap en='Total' th='รวม' /></span> {totalAmount.toFixed(2)}฿</h2>
       </div>
       <div className='bg-clr-accent h-fit rounded-r-xl rounded-bl-xl p-2'>
         <div className='grid grid-cols-3 justify-items-center pb-2 border-b border-clr-light/90 font-semibold'>
-          <h2>Type</h2>
-          <h2>Date</h2>
-          <h2>Price</h2>
+          <h2>
+            <LanguageSwap en='Type' th='ชนิด' />
+          </h2>
+          <h2>
+            <LanguageSwap en='Date' th='วันที่' />
+          </h2>
+          <h2>
+            <LanguageSwap en='Amount' th='ราคา' />
+          </h2>
         </div>
         <div className='pt-2 space-y-0'>
           {income.length > 0 ? (
@@ -105,7 +114,9 @@ function IncomeTable() {
                 </div>
               ))
             )) : (
-            <p className='text-center'>No Income Yet.</p>
+            <p className='text-center'>
+              <LanguageSwap en='No Income Yet.' th='ไม่มีข้อมูลรายรับ' />
+            </p>
           )}
           <div className='pt-4'>
             {!showAll && income.length > 15 && (
@@ -113,7 +124,7 @@ function IncomeTable() {
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
-                Show All <span className='text-sm'>({income.length} rows)</span>
+                <LanguageSwap en='Show all' th='แสดงทั้งหมด' /> <span className='text-sm'>({income.length} <LanguageSwap en='rows' th='แถว' />)</span>
               </p>
             )}
 
@@ -122,7 +133,7 @@ function IncomeTable() {
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
-                Show Less
+                <LanguageSwap en='Show less' th='แสดงลดลง' />
               </p>
             )}
           </div>
