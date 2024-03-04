@@ -1,7 +1,8 @@
 "use client"
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 
 // Components
 import ExpensesTool from "./components/tool/ExpensesTool";
@@ -10,14 +11,27 @@ import IncomeTool from "./components/tool/IncomeTool";
 import IncomeTable from "./components/table/IncomeTable";
 
 export default function Home() {
+  const [language, setLanguage] = useState('');
 
   useEffect(() => {
-    document.title = "Home - about2day"
-
-    const checkLanguage = localStorage.getItem("language");
-    if (!checkLanguage) {
-      localStorage.setItem("language", "en")
+    const defaultLanguage = () => {
+      const checkLanguage = localStorage.getItem("language");
+      if (!checkLanguage) {
+        localStorage.setItem("language", "en")
+      }
     }
+    
+    const languageCheck = () => {
+      const l = localStorage.getItem('language');
+      if (l) {
+        setLanguage(l);
+      }
+    }
+
+    defaultLanguage();
+    languageCheck();
+    
+    document.title = `${language === 'en' ? 'Home' : 'หน้าหลัก'} - about2day`
   }, [])
 
   return (

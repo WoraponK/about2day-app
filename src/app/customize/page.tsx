@@ -1,10 +1,20 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function CustomPage() {
+  const [language, setLanguage] = useState('');
+
   useEffect(() => {
-    document.title = "Customize - about2day"
+    const languageCheck = () => {
+      const l = localStorage.getItem('language');
+      if (l) {
+        setLanguage(l);
+      }
+    }
+    languageCheck();
+    document.title = `${language === 'en' ? 'Customize' : 'ของฉัน'} - about2day`
+
   }, [])
 
   return (
