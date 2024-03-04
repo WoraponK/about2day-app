@@ -19,14 +19,25 @@ function ExpensesTool() {
   const [expenses, setExpenses] = useState<Expenses[]>([]);
   const [selected, setSelected] = useState('');
   const [amount, setAmount] = useState('');
-  const [language, setLanguage] = useState(localStorage.getItem('language'));
+  const [language, setLanguage] = useState('');
+
+  useEffect(() => {
+    const languageCheck = () => {
+      const l = localStorage.getItem('language');
+      if (l) {
+        setLanguage(l);
+      }
+    }
+
+    languageCheck();
+  }, [])
 
   const handleSubmit = (e: any) => {
     try {
       e.preventDefault();
 
       const storedExpenses = localStorage.getItem('expenses');
-      let expensesHandle:Expenses[] = [];
+      let expensesHandle: Expenses[] = [];
       if (storedExpenses) {
         expensesHandle = JSON.parse(storedExpenses) as Expenses[];
       }

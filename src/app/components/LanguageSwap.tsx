@@ -1,7 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function LanguageSwap({ en, th }: { en: string, th: string }) {
-    const [language, setLanguage] = useState(localStorage.getItem('language'));
+    const [language, setLanguage] = useState('');
+
+    useEffect(() => {
+        const languageCheck = () => {
+            const l = localStorage.getItem('language');
+            if (l) {
+                setLanguage(l);
+            }
+        }
+
+        languageCheck();
+    }, [])
 
     return (
         <>

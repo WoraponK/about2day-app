@@ -1,13 +1,24 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import LanguageSwap from './LanguageSwap'
 
 function Footer() {
-    const [language, setLanguage] = useState(localStorage.getItem('language'));
+    const [language, setLanguage] = useState('');
+
+    useEffect(() => {
+        const languageCheck = () => {
+            const l = localStorage.getItem('language');
+            if (l) {
+                setLanguage(l);
+            }
+        }
+
+        languageCheck();
+    }, [])
 
     return (
         <footer className='p-16 grid grid-cols-2 border-t border-clr-light/90 max-md:grid-cols-1 max-md:gap-16 max-md:px-8'>

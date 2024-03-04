@@ -23,21 +23,33 @@ function Navbar() {
     const pathname = usePathname();
     const [isNavHidden, setIsNavHidden] = useState(false);
     const [isBurger, setIsBurger] = useState(false);
-    const [language, setLanguage] = useState(localStorage.getItem('language'));
+    const [language, setLanguage] = useState('');
 
 
     useEffect(() => {
-        const prevScorllPos = window.scrollY;
+        const scroll = () => {
+            const prevScorllPos = window.scrollY;
 
-        const handleScroll = () => {
-            const currentScrollPos = window.scrollY;
-            setIsNavHidden(currentScrollPos > prevScorllPos);
-            window.scrollY = prevScorllPos;
-        };
+            const handleScroll = () => {
+                const currentScrollPos = window.scrollY;
+                setIsNavHidden(currentScrollPos > prevScorllPos);
+                window.scrollY = prevScorllPos;
+            };
 
-        window.addEventListener('scroll', handleScroll);
+            window.addEventListener('scroll', handleScroll);
 
-        return () => window.removeEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+        }
+
+        const languageCheck = () => {
+            const l = localStorage.getItem('language');
+            if (l) {
+                setLanguage(l);
+            }
+        }
+
+        languageCheck();
+        scroll();
     }, [])
 
     const handleBurger = () => {

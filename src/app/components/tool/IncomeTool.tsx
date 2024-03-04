@@ -16,38 +16,52 @@ interface Income {
 }
 
 function IncomeTool() {
-  const [language, setLanguage] = useState(localStorage.getItem('language'));
+  const [language, setLanguage] = useState('');
   const [income, setIncome] = useState<Income[]>([]);
   const [selected, setSelected] = useState('');
   const [amount, setAmount] = useState('');
 
   useEffect(() => {
-    const storedIncome = localStorage.getItem('income');
-    if (storedIncome) {
-      setIncome(JSON.parse(storedIncome) as Income[]);
+    const languageCheck = () => {
+      const l = localStorage.getItem('language');
+      if (l) {
+        setLanguage(l);
+      }
     }
+
+    languageCheck();
   }, []);
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    const newIncome: Income = {
-      id: uuidv4(),
-      type: selected,
-      amount: parseInt(amount),
-      date: new Date().toISOString()
+      const storedIncome = localStorage.getItem('income');
+      let incomeHandle: Income[] = [];
+      if (storedIncome) {
+        incomeHandle = JSON.parse(storedIncome) as Income[];
+      }
+
+      const newIncome: Income = {
+        id: uuidv4(),
+        type: selected,
+        amount: parseInt(amount),
+        date: new Date().toISOString()
+      }
+
+      if (selected && newIncome.amount > 0) {
+        newIncome.type = selected
+        incomeHandle.unshift(newIncome);
+        localStorage.setItem('income', JSON.stringify(incomeHandle))
+        setAmount('')
+      } else {
+        console.error('Please select an expense type and enter a valid amount.')
+      }
+    } catch (e) {
+      console.error(e)
     }
-
-    if (newIncome.type) {
-      income.unshift(newIncome)
-    }
-
-    localStorage.setItem('income', JSON.stringify(income));
-
-    setAmount('')
-
-    location.reload();
   }
+
   return (
     <div className='flex flex-col h-full xl:w-full max-sm:w-full md:h-fit'>
       <div className='bg-clr-primary flex items-center space-x-2 py-2 px-4 w-3/4 rounded-t-xl h-fit'>

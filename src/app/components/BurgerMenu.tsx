@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BurgerContext } from './Navbar'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -13,7 +13,18 @@ interface BurgerValue {
 function BurgerMenu() {
     const pathname = usePathname();
     const { isBurger, setIsBurger } = useContext<BurgerValue>(BurgerContext);
-    const [language, setLanguage] = useState(localStorage.getItem('language'));
+    const [language, setLanguage] = useState('');
+
+    useEffect(() => {
+        const languageCheck = () => {
+            const l = localStorage.getItem('language');
+            if (l) {
+                setLanguage(l);
+            }
+        }
+
+        languageCheck();
+    }, [])
 
     const handleBurger = () => {
         setIsBurger((prevBurger: boolean) => !prevBurger)
