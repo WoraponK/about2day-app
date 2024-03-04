@@ -3,10 +3,17 @@
 import React, { useEffect, useState } from 'react'
 
 function OverallPage() {
-  const [language, setLanguage] = useState(localStorage.getItem('language'));
+  const [language, setLanguage] = useState('');
 
   useEffect(() => {
-    document.title = `${language === 'en' ? 'Overall': 'โดยรวม'} - about2day`
+    const languageCheck = () => {
+      const l = localStorage.getItem('language');
+      if (l) {
+        setLanguage(l);
+      }
+    }
+    languageCheck();
+    document.title = `${language === 'en' ? 'Overall' : 'โดยรวม'} - about2day`
   }, [])
 
   return (

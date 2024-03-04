@@ -14,15 +14,13 @@ export default function Home() {
   const [language, setLanguage] = useState('');
 
   useEffect(() => {
-    document.title = `${language === 'en' ? 'Home' : 'หน้าหลัก'} - about2day`
-
     const defaultLanguage = () => {
       const checkLanguage = localStorage.getItem("language");
       if (!checkLanguage) {
         localStorage.setItem("language", "en")
       }
     }
-
+    
     const languageCheck = () => {
       const l = localStorage.getItem('language');
       if (l) {
@@ -30,9 +28,10 @@ export default function Home() {
       }
     }
 
-    languageCheck();
-
     defaultLanguage();
+    languageCheck();
+    
+    document.title = `${language === 'en' ? 'Home' : 'หน้าหลัก'} - about2day`
   }, [])
 
   return (
