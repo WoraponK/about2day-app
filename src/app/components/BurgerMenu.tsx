@@ -29,7 +29,7 @@ function BurgerMenu() {
                         </div>
                     </div>
                     <ul className='flex flex-col space-y-8 uppercase text-4xl md:hidden px-8 py-8'>
-                        <li className='transition-colors hover:text-clr-secondary-2'>
+                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
                             <Link href={'/'}>
                                 {pathname == '/' ? (
                                     <p className='flex items-center space-x-2' title='Home'>
@@ -46,7 +46,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2'>
+                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
                             <Link href={'/customize'}>
                                 {pathname == '/customize' ? (
                                     <p className='flex items-center space-x-2' title='Customize'>
@@ -63,7 +63,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2'>
+                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
                             <Link href={'/overall'}>
                                 {pathname == '/overall' ? (
                                     <p className='flex items-center space-x-2' title='Overall'>
@@ -82,7 +82,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2'>
+                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
                             <Link href={'/setting'}>
                                 {pathname == '/setting' ? (
                                     <p className='flex items-center space-x-2' title='Setting'>
@@ -101,7 +101,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2'>
+                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
                             <Link href={'/about'}>
                                 {pathname == '/about' ? (
                                     <p className='flex items-center space-x-2' title='About'>

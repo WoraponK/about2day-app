@@ -47,12 +47,12 @@ function IncomeTool() {
     location.reload();
   }
   return (
-    <div className='grid grid-cols-1 place-self-end xl:w-full max-sm:w-full'>
-      <div className='bg-clr-primary flex items-center space-x-2 py-2 px-4 w-3/4 rounded-t-xl'>
+    <div className='flex flex-col h-full xl:w-full max-sm:w-full'>
+      <div className='bg-clr-primary flex items-center space-x-2 py-2 px-4 w-3/4 rounded-t-xl h-fit'>
         <A2dIcon type='in-logo' size={35} />
         <h2 className='text-xl'>Income</h2>
       </div>
-      <div className='bg-clr-accent p-2 space-y-4 rounded-tr-xl rounded-br-xl rounded-bl-xl'>
+      <div className='bg-clr-accent p-2 space-y-4 rounded-tr-xl rounded-br-xl rounded-bl-xl h-full flex flex-col justify-between'>
         <h3 className='text-center text-2xl'>Choose . . .</h3>
         <form onSubmit={handleSubmit} className='flex flex-col justify-center space-y-6'>
           <ul className='grid grid-cols-4 gap-2'>
