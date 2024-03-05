@@ -10,7 +10,7 @@ function OverviewPage() {
       const l = localStorage.getItem('language');
       if (l) {
         setLanguage(l);
-        document.title = `${l === 'en' ? 'Overall' : 'โดยรวม'} - about2day`
+        document.title = `${l === 'en' ? 'Overview' : 'ภาพรวม'} - about2day`
       }
     }
     languageCheck();
