@@ -20,6 +20,7 @@ function IncomeTable() {
   const [showAll, setShowAll] = useState(false);
   const [language, setLanguage] = useState('');
   const [isModal, setIsModal] = useState(false);
+  const [getId, setGetId] = useState('');
 
   useEffect(() => {
     const fetchData = () => {
@@ -70,6 +71,11 @@ function IncomeTable() {
     }
   }
 
+  const getIncomeId = (id: string) => {
+    toggleModal();
+    setGetId(id);
+  }
+
   const handleDelete = (id: string) => {
     try {
       const incomeIndex = income.findIndex((ex) => ex.id === id);
@@ -88,7 +94,7 @@ function IncomeTable() {
     }
   }
 
-  const InnerModal = ({ id }: { id: string }) => (
+  const InnerModal = () => (
     <div className='space-y-4'>
       <h3 className='text-2xl font-semibold text-center'>
         <LanguageSwap
@@ -105,7 +111,7 @@ function IncomeTable() {
       <div className='flex justify-end space-x-2'>
         <button
           className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
-          onClick={() => handleDelete(id)}
+          onClick={() => handleDelete(getId)}
         >
           <LanguageSwap en='Sure' th='ยืนยัน' />
         </button>
@@ -147,7 +153,7 @@ function IncomeTable() {
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={toggleModal}
+                    onClick={() => getIncomeId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
                       <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
@@ -166,7 +172,7 @@ function IncomeTable() {
                   </div>
                   {isModal && (
                     <Modal>
-                      <InnerModal id={data.id} />
+                      <InnerModal />
                     </Modal>
                   )}
                 </div>
@@ -176,7 +182,7 @@ function IncomeTable() {
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={toggleModal}
+                    onClick={() => getIncomeId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
                       <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
@@ -195,7 +201,7 @@ function IncomeTable() {
                   </div>
                   {isModal && (
                     <Modal>
-                      <InnerModal id={data.id} />
+                      <InnerModal />
                     </Modal>
                   )}
                 </div>
