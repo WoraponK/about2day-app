@@ -180,7 +180,7 @@ function BurgerMenu() {
                                     ? 'Support me'
                                     : 'สนับสนุน'}
                             </h2>
-                            <a href="https://www.buymeacoffee.com/tellytawin" target='_blank'>
+                            <a href="https://www.buymeacoffee.com/tellytawin" target='_blank' >
                                 <button className='py-2 w-full text-xl rounded bg-yellow-500 transition-colors hover:bg-yellow-400 text-clr-dark'><i className="bi bi-cup-hot-fill mr-2"></i>buymeacoffee</button>
                             </a>
                         </div>
@@ -190,24 +190,39 @@ function BurgerMenu() {
                                     ? 'Social'
                                     : 'โซเชียล'}
                             </h2>
-                            <ul className='flex text-5xl justify-around'>
+                            <ul className='flex text-5xl space-x-6'>
                                 <li >
-                                    <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/" target='_blank'>
+                                    <a
+                                        className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/"
+                                        target='_blank'
+                                        aria-label='Facebook: Tell'
+                                    >
                                         <i className="bi bi-facebook"></i>
                                     </a>
                                 </li>
                                 <li >
-                                    <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.instagram.com/telly_tawin/" target='_blank'>
+                                    <a
+                                        className='transition-colors hover:text-clr-primary h-fit' href="https://www.instagram.com/telly_tawin/"
+                                        target='_blank'
+                                        aria-label='Instagram: telly_tawin'
+                                    >
                                         <i className="bi bi-instagram"></i>
                                     </a>
                                 </li>
                                 <li >
-                                    <a className='transition-colors hover:text-clr-primary h-fit' href="https://github.com/WoraponK" target='_blank'>
+                                    <a
+                                        className='transition-colors hover:text-clr-primary h-fit' href="https://github.com/WoraponK" target='_blank'
+                                        aria-label='GitHub: WoraponK'
+                                    >
                                         <i className="bi bi-github"></i>
                                     </a>
                                 </li>
                                 <li >
-                                    <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.youtube.com/@WoraponKS" target='_blank'>
+                                    <a
+                                        className='transition-colors hover:text-clr-primary h-fit' href="https://www.youtube.com/@WoraponKS"
+                                        target='_blank'
+                                        aria-label='Youtube: WoraponK'
+                                    >
                                         <i className="bi bi-youtube"></i>
                                     </a>
                                 </li>

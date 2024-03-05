@@ -85,22 +85,37 @@ function Footer() {
                         </h2>
                         <ul className='flex text-3xl space-x-4'>
                             <li >
-                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/" target='_blank'>
+                                <a
+                                    className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/"
+                                    target='_blank'
+                                    aria-label='Facebook: Tell'
+                                >
                                     <i className="bi bi-facebook"></i>
                                 </a>
                             </li>
                             <li >
-                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.instagram.com/telly_tawin/" target='_blank'>
+                                <a
+                                    className='transition-colors hover:text-clr-primary h-fit' href="https://www.instagram.com/telly_tawin/"
+                                    target='_blank'
+                                    aria-label='Instagram: telly_tawin'
+                                >
                                     <i className="bi bi-instagram"></i>
                                 </a>
                             </li>
                             <li >
-                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://github.com/WoraponK" target='_blank'>
+                                <a
+                                    className='transition-colors hover:text-clr-primary h-fit' href="https://github.com/WoraponK" target='_blank'
+                                    aria-label='GitHub: WoraponK'
+                                >
                                     <i className="bi bi-github"></i>
                                 </a>
                             </li>
                             <li >
-                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.youtube.com/@WoraponKS" target='_blank'>
+                                <a
+                                    className='transition-colors hover:text-clr-primary h-fit' href="https://www.youtube.com/@WoraponKS"
+                                    target='_blank'
+                                    aria-label='Youtube: WoraponK'
+                                >
                                     <i className="bi bi-youtube"></i>
                                 </a>
                             </li>
