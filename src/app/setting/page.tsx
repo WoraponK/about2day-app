@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/src/sweetalert2.js';
 
 function SettingPage() {
   const [language, setLanguage] = useState('');
