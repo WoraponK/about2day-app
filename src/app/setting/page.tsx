@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 function SettingPage() {
   const [language, setLanguage] = useState('');
@@ -23,6 +24,18 @@ function SettingPage() {
     location.reload();
   }
 
+  const modalDeleteAll = () => {
+    Swal.fire({
+      icon: 'warning',
+      title: `${language === 'en'
+        ? 'Want to delete all data ?'
+        : 'ต้องการล้างข้อมูลทั้งหมดใช่หรือไม่ ?'}`,
+      text: `${language === 'en'
+        ? 'If you have done this, It will not be possible to revert your "income and expenses" data.'
+        : 'ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูล "รายรับ-รายจ่าย" กลับมาได้'}`
+    })
+  }
+
   const LanguageSettingBox = () => (
     <div className='space-y-2'>
       <h2 className='text-2xl font-semibold'>
@@ -41,7 +54,7 @@ function SettingPage() {
               checked={language === 'en'}
               onChange={handleLanguageChange}
             />
-            <label htmlFor="english" className='btn text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'>
+            <label htmlFor="english" className='btn border-none text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'>
               <span>{language === 'en' ? 'English' : 'อังกฤษ'}</span>
             </label>
           </li>
@@ -55,7 +68,7 @@ function SettingPage() {
               checked={language === 'th'}
               onChange={handleLanguageChange}
             />
-            <label htmlFor="thai" className='btn text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'>
+            <label htmlFor="thai" className='btn border-none text-clr-light cursor-pointer flex justify-center items-center h-fit w-fit bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'>
               <span>{language === 'en' ? 'Thai' : 'ไทย'}</span>
             </label>
           </li>
@@ -67,45 +80,13 @@ function SettingPage() {
   const DeleteAllButton = () => (
     <>
       <button
-        onClick={() => {
-          document ?
-            (document.getElementById('modal_delete_all') as HTMLFormElement).showModal()
-            : null
-        }}
-        className='btn text-clr-light bg-clr-red transition-colors hover:bg-clr-red/90'
+        onClick={modalDeleteAll}
+        className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/90'
       >
         {language === 'en'
           ? 'Delelete All Data'
           : 'ล้างข้อมูลทั้งหมด'}
       </button>
-      <dialog id="modal_delete_all" className="modal">
-        <div className="modal-box bg-clr-gray-1/80">
-          <h3 className="font-bold text-2xl text-center">
-            {language === 'en'
-              ? 'Want to delete all data ?'
-              : 'ต้องการล้างข้อมูลทั้งหมดใช่หรือไม่ ?'}
-          </h3>
-          <p className="py-4 text-center">
-            {language === 'en'
-              ? 'If you have done this, It will not be possible to revert your "income and expenses" data.'
-              : 'ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูล "รายรับ-รายจ่าย" กลับมาได้'}
-          </p>
-          <div className="modal-action">
-            <form method="dialog" className='space-x-2'>
-              <button onClick={handleDeleteAllSubmit} className="btn border-none text-clr-light bg-clr-primary hover:bg-clr-primary/80">
-                {language === 'en'
-                  ? 'Sure'
-                  : 'ยืนยัน'}
-              </button>
-              <button className="btn border-none text-clr-light bg-clr-red hover:bg-clr-red/80">
-                {language === 'en'
-                  ? 'Cancel'
-                  : 'ยกเลิก'}
-              </button>
-            </form>
-          </div>
-        </div>
-      </dialog>
     </>
   );
 
