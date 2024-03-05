@@ -6,6 +6,7 @@ import moment from 'moment';
 import A2dIcon from '../icons/A2dIcon'
 
 import LanguageSwap from '../LanguageSwap';
+import Modal from '../Modal';
 
 interface Income {
   id: string;
@@ -17,20 +18,37 @@ interface Income {
 function IncomeTable() {
   const [income, setIncome] = useState<Income[]>([]);
   const [showAll, setShowAll] = useState(false);
+  const [language, setLanguage] = useState('');
+  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
-    const storedIncome = localStorage.getItem('income');
-    if (storedIncome) {
-      setIncome(JSON.parse(storedIncome) as Income[]);
+    const fetchData = () => {
+      const storedIncome = localStorage.getItem('income');
+      if (storedIncome) {
+        setIncome(JSON.parse(storedIncome) as Income[]);
+      }
     }
+
+    const languageCheck = () => {
+      const l = localStorage.getItem('language');
+      if (l) {
+        setLanguage(l);
+      }
+    }
+
+    fetchData();
+    languageCheck();
   }, []);
 
+  const toggleModal = () => setIsModal((prev: boolean) => !prev);
 
   const handleShowAllClick = () => {
     setShowAll((prevShowAll) => !prevShowAll)
   }
 
   const totalAmount = income.reduce((acc, item) => acc + item.amount, 0)
+
+
 
   const formatDate = (value: string) => {
     if (value) {
@@ -51,6 +69,55 @@ function IncomeTable() {
         return <LanguageSwap en='Null' th='ว่าง' />
     }
   }
+
+  const handleDelete = (id: string) => {
+    try {
+      const incomeIndex = income.findIndex((ex) => ex.id === id);
+
+      if (incomeIndex !== -1) {
+        const updatedIncome = [...income];
+
+        updatedIncome.splice(incomeIndex, 1);
+
+        setIncome(updatedIncome);
+        localStorage.setItem('income', JSON.stringify(updatedIncome));
+        toggleModal();
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  const InnerModal = ({ id }: { id: string }) => (
+    <div className='space-y-4'>
+      <h3 className='text-2xl font-semibold text-center'>
+        <LanguageSwap
+          en='Want to delete this data?'
+          th='ต้องการลบรายการนี้ใช่หรือไม่ ?'
+        />
+      </h3>
+      <p className='text-lg text-center'>
+        <LanguageSwap
+          en='If you have done this, It will not be possible to revert your data.'
+          th='ถ้าหากทำการยืนยัน จะไม่สามารถแก้ไขข้อมูลกลับมาได้'
+        />
+      </p>
+      <div className='flex justify-end space-x-2'>
+        <button
+          className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
+          onClick={() => handleDelete(id)}
+        >
+          <LanguageSwap en='Sure' th='ยืนยัน' />
+        </button>
+        <button
+          className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
+          onClick={toggleModal}
+        >
+          <LanguageSwap en='Cancel' th='ยกเลิก' />
+        </button>
+      </div>
+    </div>
+  );
 
 
   return (
@@ -77,40 +144,60 @@ function IncomeTable() {
           {income.length > 0 ? (
             showAll ? (
               income.map((data) => (
-                <div key={data.id} className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'>
-                  <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                    <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
-                    </div>
-                  </div>
-                  <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
-                    <div className='flex space-x-2'>
-                      <div className='relative object flex justify-center items-center'>
-                        <A2dIcon type={data.type} size={20} />
+                <div key={data.id}>
+                  <div
+                    className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
+                    onClick={toggleModal}
+                  >
+                    <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
+                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
-                      <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
                     </div>
-                    <p>{formatDate(data.date)}</p>
-                    <p>{data.amount}฿</p>
+                    <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
+                      <div className='flex space-x-2'>
+                        <div className='relative object flex justify-center items-center'>
+                          <A2dIcon type={data.type} size={20} />
+                        </div>
+                        <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
+                      </div>
+                      <p>{formatDate(data.date)}</p>
+                      <p>{data.amount}฿</p>
+                    </div>
                   </div>
+                  {isModal && (
+                    <Modal>
+                      <InnerModal id={data.id} />
+                    </Modal>
+                  )}
                 </div>
               ))
             ) : (
               income.slice(0, 15).map((data) => (
-                <div key={data.id} className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'>
-                  <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                    <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
-                    </div>
-                  </div>
-                  <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
-                    <div className='flex space-x-2'>
-                      <div className='relative object flex justify-center items-center'>
-                        <A2dIcon type={data.type} size={20} />
+                <div key={data.id}>
+                  <div
+                    className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
+                    onClick={toggleModal}
+                  >
+                    <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
+                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
-                      <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
                     </div>
-                    <p>{formatDate(data.date)}</p>
-                    <p>{data.amount}฿</p>
+                    <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
+                      <div className='flex space-x-2'>
+                        <div className='relative object flex justify-center items-center'>
+                          <A2dIcon type={data.type} size={20} />
+                        </div>
+                        <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
+                      </div>
+                      <p>{formatDate(data.date)}</p>
+                      <p>{data.amount}฿</p>
+                    </div>
                   </div>
+                  {isModal && (
+                    <Modal>
+                      <InnerModal id={data.id} />
+                    </Modal>
+                  )}
                 </div>
               ))
             )) : (
