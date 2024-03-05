@@ -84,26 +84,26 @@ function Footer() {
                             <LanguageSwap en='Social' th='โซเขียล' />
                         </h2>
                         <ul className='flex text-3xl space-x-4'>
-                            <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/" target='_blank'>
-                                <li >
+                            <li >
+                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/" target='_blank'>
                                     <i className="bi bi-facebook"></i>
-                                </li>
-                            </a>
-                            <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/" target='_blank'>
-                                <li >
+                                </a>
+                            </li>
+                            <li >
+                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.instagram.com/telly_tawin/" target='_blank'>
                                     <i className="bi bi-instagram"></i>
-                                </li>
-                            </a>
-                            <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/" target='_blank'>
-                                <li >
+                                </a>
+                            </li>
+                            <li >
+                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://github.com/WoraponK" target='_blank'>
                                     <i className="bi bi-github"></i>
-                                </li>
-                            </a>
-                            <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.youtube.com/@WoraponKS" target='_blank'>
-                                <li >
+                                </a>
+                            </li>
+                            <li >
+                                <a className='transition-colors hover:text-clr-primary h-fit' href="https://www.youtube.com/@WoraponKS" target='_blank'>
                                     <i className="bi bi-youtube"></i>
-                                </li>
-                            </a>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

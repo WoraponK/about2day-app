@@ -67,7 +67,7 @@ function IncomeTool() {
     <div className='flex flex-col h-full xl:w-full max-sm:w-full md:h-fit'>
       <div className='bg-clr-primary flex items-center space-x-2 py-2 px-4 w-3/4 rounded-t-xl h-fit'>
         <A2dIcon type='in-logo' size={35} />
-        <h2 className='text-xl'>
+        <h2 className='text-xl font-semibold'>
           <LanguageSwap en='Income' th='รายรับ' />
         </h2>
       </div>
