@@ -8,7 +8,7 @@ function CustomPage() {
     const languageCheck = () => {
       const l = localStorage.getItem('language');
       if (l) {
-        document.title = `${l === 'en' ? 'Customize' : 'ของฉัน'} - about2day`
+        document.title = `${l === 'en' ? 'Customize' : 'จัดการ'} - about2day`
       }
     }
     languageCheck();
