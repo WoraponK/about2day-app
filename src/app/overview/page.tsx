@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-function OverallPage() {
+function OverviewPage() {
   const [language, setLanguage] = useState('');
 
   useEffect(() => {
@@ -17,8 +17,8 @@ function OverallPage() {
   }, [])
 
   return (
-    <div>OverallPage</div>
+    <div>OverviewPage</div>
   )
 }
 
-export default OverallPage
+export default OverviewPage

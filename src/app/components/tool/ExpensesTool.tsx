@@ -69,7 +69,7 @@ function ExpensesTool() {
         <div className='relative object w-auto h-auto flex justify-center items-center'>
           <A2dIcon type='ex-logo' size={35} />
         </div>
-        <h2 className='text-xl'>
+        <h2 className='text-xl font-semibold'>
           <LanguageSwap en='Expenses' th='รายจ่าย' />
         </h2>
       </div>

@@ -19,6 +19,7 @@ function ExpensesTable() {
   const [expenses, setExpenses] = useState<Expenses[]>([]);
   const [showAll, setShowAll] = useState(false);
   const [isModal, setIsModal] = useState(false);
+  const [getId, setGetId] = useState('');
 
   useEffect(() => {
     const storedExpenses = localStorage.getItem('expenses');
@@ -65,6 +66,11 @@ function ExpensesTable() {
     }
   }
 
+  const getExpensesId = (id: string) => {
+    toggleModal();
+    setGetId(id);
+  }
+
   const handleDelete = (id: string) => {
     try {
       const expensesIndex = expenses.findIndex((inc) => inc.id === id);
@@ -76,6 +82,7 @@ function ExpensesTable() {
 
         setExpenses(updatedExpenses);
         localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
+
         toggleModal();
       }
     } catch (e) {
@@ -83,7 +90,7 @@ function ExpensesTable() {
     }
   }
 
-  const InnerModal = ({ id }: { id: string }) => (
+  const InnerModal = () => (
     <div className='space-y-4'>
       <h3 className='text-2xl font-semibold text-center'>
         <LanguageSwap
@@ -100,7 +107,7 @@ function ExpensesTable() {
       <div className='flex justify-end space-x-2'>
         <button
           className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
-          onClick={() => handleDelete(id)}
+          onClick={() => handleDelete(getId)}
         >
           <LanguageSwap en='Sure' th='ยืนยัน' />
         </button>
@@ -143,7 +150,7 @@ function ExpensesTable() {
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={toggleModal}
+                    onClick={() => getExpensesId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
                       <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
@@ -162,7 +169,7 @@ function ExpensesTable() {
                   </div>
                   {isModal && (
                     <Modal>
-                      <InnerModal id={data.id} />
+                      <InnerModal />
                     </Modal>
                   )}
                 </div>
@@ -172,7 +179,7 @@ function ExpensesTable() {
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={toggleModal}
+                    onClick={() => getExpensesId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
                       <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
@@ -191,7 +198,7 @@ function ExpensesTable() {
                   </div>
                   {isModal && (
                     <Modal>
-                      <InnerModal id={data.id} />
+                      <InnerModal />
                     </Modal>
                   )}
                 </div>

@@ -24,7 +24,7 @@ function AboutPage() {
         <h3 className='text-3xl font-semibold text-center'>
           <LanguageSwap en='What is about2day ?' th='อะไรคือ about2day' />
         </h3>
-        <p className='text-lg'>
+        <p className='text-lg text-center'>
           <LanguageSwap
             en='
             About2day was initially designed and developed as a mobile application. However, we are now considering the possibility of expanding it into a web application, which is why we have created this website.
@@ -37,7 +37,7 @@ function AboutPage() {
         <h3 className='text-3xl font-semibold text-center'>
           <LanguageSwap en='Why about2day ?' th='ทำไมต้อง about2day' />
         </h3>
-        <p className='text-lg'>
+        <p className='text-lg text-center'>
           <LanguageSwap
             en='Do you want to keep track of your daily activities? If so, our website can help you. Our main feature is "Income-Expenses" recording, but thats not all. You can also create your own records, which can be in the form of number of times or satisfaction level.'
             th='ต้องการบันทึกข้อมูลในแต่ละวันไหมล่ะ ? ถ้าใช่ เว็บไซต์ของเราสามารถตอบโจทย์ให้คุณได้ โดยการบันทึกหลักของเราก็คือ "รายรับ-รายจ่าย" แต่ไม่ได้มีแค่นั้น คุณยังสามารถที่จะสร้างการบันทึกของคุณมาได้ แต่จะเป็นการบันทึกในรูปแบบจำนวนครั้งหรือความพึงพอใจ'
@@ -48,7 +48,7 @@ function AboutPage() {
         <h3 className='text-3xl font-semibold text-center'>
           <LanguageSwap en='What is "BoutDay?" Button' th='อะไรคือปุ่ม "วันนี้เป็นไง?"' />
         </h3>
-        <p className='text-lg'>
+        <p className='text-lg text-center'>
           <LanguageSwap
             en='How do you feel in everyday? You can record your daily feel.'
             th='ในแต่ละวันคุณรู้สึกพึงพอใจมากแค่ไหนกันล่ะ ? คุณสามารถบันทึกความพึงพอใจในแต่ละวันได้'
