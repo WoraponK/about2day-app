@@ -5,13 +5,11 @@ import React, { useEffect, useState } from 'react'
 import LanguageSwap from '../components/LanguageSwap';
 
 function AboutPage() {
-  const [language, setLanguage] = useState('');
 
   useEffect(() => {
     const languageCheck = () => {
       const l = localStorage.getItem('language');
       if (l) {
-        setLanguage(l);
         document.title = `${l === 'en' ? 'About' : 'เกี่ยวกับ'} - about2day`
       }
     }

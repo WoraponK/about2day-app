@@ -8,16 +8,10 @@ import A2dIcon from '../icons/A2dIcon'
 
 import LanguageSwap from '../LanguageSwap';
 
-interface Income {
-  id: string;
-  type: string;
-  amount: number;
-  date: string;
-}
+import { Finance } from '@/app/types';
 
-function IncomeTool() {
+function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
   const [language, setLanguage] = useState('');
-  const [income, setIncome] = useState<Income[]>([]);
   const [selected, setSelected] = useState('');
   const [amount, setAmount] = useState('');
 
@@ -29,20 +23,20 @@ function IncomeTool() {
       }
     }
 
+    const fetchData = () => {
+      const storedIncome = localStorage.getItem('income');
+      setIncome(storedIncome ? JSON.parse(storedIncome) : []);
+    }
+
     languageCheck();
+    fetchData();
   }, []);
 
   const handleSubmit = (e: any) => {
     try {
       e.preventDefault();
 
-      const storedIncome = localStorage.getItem('income');
-      let incomeHandle: Income[] = [];
-      if (storedIncome) {
-        incomeHandle = JSON.parse(storedIncome) as Income[];
-      }
-
-      const newIncome: Income = {
+      const newIncome: Finance = {
         id: uuidv4(),
         type: selected,
         amount: parseInt(amount),
@@ -50,11 +44,16 @@ function IncomeTool() {
       }
 
       if (selected && newIncome.amount > 0) {
-        newIncome.type = selected
-        incomeHandle.unshift(newIncome);
-        localStorage.setItem('income', JSON.stringify(incomeHandle))
+        const existingIncome = localStorage.getItem('income');
+        const parseExistingIncome = existingIncome ? JSON.parse(existingIncome) : '';
+
+        const updatedIncome = [newIncome, ...parseExistingIncome];
+
+        setIncome(updatedIncome)
+
+        localStorage.setItem('income', JSON.stringify(updatedIncome));
+  
         setAmount('')
-        location.reload();
       } else {
         console.error('Please select an expense type and enter a valid amount.')
       }
@@ -62,6 +61,7 @@ function IncomeTool() {
       console.error(e)
     }
   }
+
 
   return (
     <div className='flex flex-col h-full xl:w-full max-sm:w-full md:h-fit'>

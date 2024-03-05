@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import moment from 'moment';
 
 import A2dIcon from '../icons/A2dIcon'
@@ -8,38 +8,12 @@ import A2dIcon from '../icons/A2dIcon'
 import LanguageSwap from '../LanguageSwap';
 import Modal from '../Modal';
 
-interface Income {
-  id: string;
-  type: string;
-  amount: number;
-  date: string;
-}
+import { Finance } from '@/app/types';
 
-function IncomeTable() {
-  const [income, setIncome] = useState<Income[]>([]);
+function IncomeTable({ income, setIncome }: { income: Finance[], setIncome: any }) {
   const [showAll, setShowAll] = useState(false);
-  const [language, setLanguage] = useState('');
   const [isModal, setIsModal] = useState(false);
   const [getId, setGetId] = useState('');
-
-  useEffect(() => {
-    const fetchData = () => {
-      const storedIncome = localStorage.getItem('income');
-      if (storedIncome) {
-        setIncome(JSON.parse(storedIncome) as Income[]);
-      }
-    }
-
-    const languageCheck = () => {
-      const l = localStorage.getItem('language');
-      if (l) {
-        setLanguage(l);
-      }
-    }
-
-    fetchData();
-    languageCheck();
-  }, []);
 
   const toggleModal = () => setIsModal((prev: boolean) => !prev);
 
@@ -48,8 +22,6 @@ function IncomeTable() {
   }
 
   const totalAmount = income.reduce((acc, item) => acc + item.amount, 0)
-
-
 
   const formatDate = (value: string) => {
     if (value) {

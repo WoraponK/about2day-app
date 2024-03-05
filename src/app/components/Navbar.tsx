@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import HowBoutDayButton from './buttons/HowBoutDayButton';
-import LanguageSwap from './LanguageSwap';
 import BurgerMenu from "./BurgerMenu";
 
 interface BurgerType {
