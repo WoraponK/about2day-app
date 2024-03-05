@@ -10,10 +10,10 @@ function CustomPage() {
       const l = localStorage.getItem('language');
       if (l) {
         setLanguage(l);
+        document.title = `${l === 'en' ? 'Customize' : 'ของฉัน'} - about2day`
       }
     }
     languageCheck();
-    document.title = `${language === 'en' ? 'Customize' : 'ของฉัน'} - about2day`
 
   }, [])
 

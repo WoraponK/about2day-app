@@ -10,14 +10,14 @@ function SettingPage() {
       const l = localStorage.getItem('language');
       if (l) {
         setLanguage(l);
+        document.title = `${l === 'en' ? 'Setting' : 'ตั้งค่า'} - about2day`
       }
     }
 
     languageCheck();
-    document.title = `${language === 'en' ? 'Setting': 'ตั้งค่า'} - about2day`
   }, [])
 
-  const handleLanguageChange = (e) => {
+  const handleLanguageChange = (e: any) => {
     setLanguage(e.target.value);
     localStorage.setItem('language', e.target.value);
     location.reload();
@@ -25,7 +25,10 @@ function SettingPage() {
 
   const LanguageSettingBox = () => (
     <div className='space-y-2'>
-      <h2 className='text-2xl font-semibold'>{language === 'en' ? 'Language' : 'ภาษา'}</h2>
+      <h2 className='text-2xl font-semibold'>
+        <i className="bi bi-globe-americas mr-2"></i>
+        {language === 'en' ? 'Languages' : 'ภาษา'}
+      </h2>
       <form>
         <ul className='text-lg flex space-x-2'>
           <li>
@@ -61,16 +64,22 @@ function SettingPage() {
     </div>
   );
 
-  const DataSettingBox = () => (
-    <div className='space-y-2'>
-      <h2 className='text-2xl font-semibold'>{language === 'en' ? 'Data' : 'ข้อมูล'}</h2>
-      <button onClick={() => document.getElementById('my_modal_2').showModal()} className='btn text-clr-light bg-clr-red transition-colors hover:bg-clr-red/90'>
+  const DeleteAllButton = () => (
+    <>
+      <button
+        onClick={() => {
+          document ?
+            (document.getElementById('modal_delete_all') as HTMLFormElement).showModal()
+            : null
+        }}
+        className='btn text-clr-light bg-clr-red transition-colors hover:bg-clr-red/90'
+      >
         {language === 'en'
           ? 'Delelete All Data'
           : 'ล้างข้อมูลทั้งหมด'}
       </button>
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box bg-clr-gray-1/70">
+      <dialog id="modal_delete_all" className="modal">
+        <div className="modal-box bg-clr-gray-1/80">
           <h3 className="font-bold text-2xl text-center">
             {language === 'en'
               ? 'Want to delete all data ?'
@@ -97,6 +106,16 @@ function SettingPage() {
           </div>
         </div>
       </dialog>
+    </>
+  );
+
+  const DataSettingBox = () => (
+    <div className='space-y-2'>
+      <h2 className='text-2xl font-semibold'>
+        <i className="bi bi-database mr-2"></i>
+        {language === 'en' ? 'Data' : 'ข้อมูล'}
+      </h2>
+      <DeleteAllButton />
     </div>
   );
 
@@ -107,7 +126,7 @@ function SettingPage() {
 
   return (
     <>
-      <section className='px-64 grid grid-cols-1 space-y-8 max-lg:px-32 max-md:px-8 max-sm:px-0'>
+      <section className='px-32 grid grid-cols-1 space-y-16 max-lg:px-32 max-md:px-8 max-sm:px-0'>
         <LanguageSettingBox />
         <DataSettingBox />
       </section>

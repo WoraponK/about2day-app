@@ -17,11 +17,11 @@ function HowBoutDayButton() {
     }, [])
 
     return (
-        <button className='bg-clr-secondary-1 py-2 px-4 max-sm:p-3 text-lg rounded-full flex items-center  gap-1 transition-colors hover:bg-clr-secondary-2'>
+        <button className='bg-clr-secondary-1 py-2 px-4 max-sm:p-3 text-lg rounded-full flex items-center  space-x-3 transition-colors hover:bg-clr-secondary-2'>
             <MoodIcon level={5} size={25} />
-            <span className='max-sm:hidden'>
+            <span className='max-sm:hidden font-semibold'>
                 {language === 'en'
-                ? 'How bout2day?'
+                ? 'ฺBoutDay?'
                 : 'วันนี้เป็นไง?'}
             </span>
         </button>

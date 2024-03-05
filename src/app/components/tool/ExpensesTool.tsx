@@ -54,6 +54,7 @@ function ExpensesTool() {
         expensesHandle.unshift(newExpenses);
         localStorage.setItem('expenses', JSON.stringify(expensesHandle))
         setAmount('')
+        location.reload();
       } else {
         console.error('Please select an expense type and enter a valid amount.')
       }

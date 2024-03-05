@@ -54,6 +54,7 @@ function IncomeTool() {
         incomeHandle.unshift(newIncome);
         localStorage.setItem('income', JSON.stringify(incomeHandle))
         setAmount('')
+        location.reload();
       } else {
         console.error('Please select an expense type and enter a valid amount.')
       }
