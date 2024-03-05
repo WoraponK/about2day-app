@@ -53,8 +53,8 @@ function Footer() {
                             </Link>
                         </li>
                         <li className='transition-colors hover:text-clr-primary'>
-                            <Link href={'/overall'}>
-                                <LanguageSwap en='Overall' th='โดยรวม' />
+                            <Link href={'/overview'}>
+                                <LanguageSwap en='Overview' th='ภาพรวม' />
 
                             </Link>
                         </li>

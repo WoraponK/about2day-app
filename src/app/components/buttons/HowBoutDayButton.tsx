@@ -21,7 +21,7 @@ function HowBoutDayButton() {
             <MoodIcon level={5} size={25} />
             <span className='max-sm:hidden font-semibold'>
                 {language === 'en'
-                ? 'ฺBoutDay?'
+                ? 'BoutDay?'
                 : 'วันนี้เป็นไง?'}
             </span>
         </button>

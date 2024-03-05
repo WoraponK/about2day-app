@@ -113,19 +113,19 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/overall'}>
-                            {pathname == '/overall' ? (
+                        <Link href={'/overview'}>
+                            {pathname == '/overview' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Overall'
-                                    : 'โดยรวม'}>
+                                    ? 'Overview'
+                                    : 'ภาพรวม'}>
                                     <i className="bi bi-calendar3-range-fill"></i>
 
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                        ? 'Overall'
-                                        : 'โดยรวม'}>
+                                        ? 'Overview'
+                                        : 'ภาพรวม'}>
                                         <i className="bi bi-calendar3-range"></i>
                                     </p>
                                 )
