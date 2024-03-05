@@ -6,6 +6,7 @@ import moment from 'moment';
 import A2dIcon from '../icons/A2dIcon'
 
 import LanguageSwap from '../LanguageSwap';
+import Modal from '../Modal';
 
 interface Expenses {
   id: string;
@@ -17,7 +18,7 @@ interface Expenses {
 function ExpensesTable() {
   const [expenses, setExpenses] = useState<Expenses[]>([]);
   const [showAll, setShowAll] = useState(false);
-
+  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     const storedExpenses = localStorage.getItem('expenses');
@@ -31,6 +32,7 @@ function ExpensesTable() {
     }
   }, []);
 
+  const toggleModal = () => setIsModal((prev: boolean) => !prev);
 
   const handleShowAllClick = () => {
     setShowAll((prevShowAll) => !prevShowAll)
@@ -63,6 +65,55 @@ function ExpensesTable() {
     }
   }
 
+  const handleDelete = (id: string) => {
+    try {
+      const expensesIndex = expenses.findIndex((inc) => inc.id === id);
+
+      if (expensesIndex !== -1) {
+        const updatedExpenses = [...expenses];
+
+        updatedExpenses.splice(expensesIndex, 1);
+
+        setExpenses(updatedExpenses);
+        localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
+        toggleModal();
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  const InnerModal = ({ id }: { id: string }) => (
+    <div className='space-y-4'>
+      <h3 className='text-2xl font-semibold text-center'>
+        <LanguageSwap
+          en='Want to delete this data?'
+          th='ต้องการลบรายการนี้ใช่หรือไม่ ?'
+        />
+      </h3>
+      <p className='text-lg text-center'>
+        <LanguageSwap
+          en='If you have done this, It will not be possible to revert your data.'
+          th='ถ้าหากทำการยืนยัน จะไม่สามารถแก้ไขข้อมูลกลับมาได้'
+        />
+      </p>
+      <div className='flex justify-end space-x-2'>
+        <button
+          className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
+          onClick={() => handleDelete(id)}
+        >
+          <LanguageSwap en='Sure' th='ยืนยัน' />
+        </button>
+        <button
+          className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
+          onClick={toggleModal}
+        >
+          <LanguageSwap en='Cancel' th='ยกเลิก' />
+        </button>
+      </div>
+    </div>
+  );
+
 
   return (
     <div className='flex flex-col'>
@@ -89,45 +140,65 @@ function ExpensesTable() {
           {expenses.length > 0 ? (
             showAll ? (
               expenses.map((data) => (
-                <div key={data.id} className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'>
-                  <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                    <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
-                    </div>
-                  </div>
-                  <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
-                    <div className='flex space-x-2'>
-                      <div className='relative object flex justify-center items-center'>
-                        <A2dIcon type={data.type} size={20} />
+                <div key={data.id}>
+                  <div
+                    className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
+                    onClick={toggleModal}
+                  >
+                    <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
+                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
-                      <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
                     </div>
-                    <p>{formatDate(data.date)}</p>
-                    <p>{data.amount}฿</p>
+                    <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
+                      <div className='flex space-x-2'>
+                        <div className='relative object flex justify-center items-center'>
+                          <A2dIcon type={data.type} size={20} />
+                        </div>
+                        <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
+                      </div>
+                      <p>{formatDate(data.date)}</p>
+                      <p>{data.amount}฿</p>
+                    </div>
                   </div>
+                  {isModal && (
+                    <Modal>
+                      <InnerModal id={data.id} />
+                    </Modal>
+                  )}
                 </div>
               ))
             ) : (
               expenses.slice(0, 15).map((data) => (
-                <div key={data.id} className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'>
-                  <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                    <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
-                    </div>
-                  </div>
-                  <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
-                    <div className='flex space-x-2'>
-                      <div className='relative object flex justify-center items-center'>
-                        <A2dIcon type={data.type} size={20} />
+                <div key={data.id}>
+                  <div
+                    className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
+                    onClick={toggleModal}
+                  >
+                    <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
+                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
-                      <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
                     </div>
-                    <p>{formatDate(data.date)}</p>
-                    <p>{data.amount}฿</p>
+                    <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
+                      <div className='flex space-x-2'>
+                        <div className='relative object flex justify-center items-center'>
+                          <A2dIcon type={data.type} size={20} />
+                        </div>
+                        <p className='xl:block max-xl:hidden max-lg:block'>{convertTypeToName(data.type)}</p>
+                      </div>
+                      <p>{formatDate(data.date)}</p>
+                      <p>{data.amount}฿</p>
+                    </div>
                   </div>
+                  {isModal && (
+                    <Modal>
+                      <InnerModal id={data.id} />
+                    </Modal>
+                  )}
                 </div>
               ))
             )) : (
             <p className='text-center'>
-              <LanguageSwap en='No Expenses Yet.' th='ไม่มีข้อมูลรายจ่าย'/>
+              <LanguageSwap en='No Expenses Yet.' th='ไม่มีข้อมูลรายจ่าย' />
             </p>
           )}
           <div className='pt-4'>
@@ -136,7 +207,7 @@ function ExpensesTable() {
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
-                <LanguageSwap en='Show all' th='แสดงทั้งหมด'/> <span className='text-sm'>({expenses.length} <LanguageSwap en='rows' th='แถว'/>)</span>
+                <LanguageSwap en='Show all' th='แสดงทั้งหมด' /> <span className='text-sm'>({expenses.length} <LanguageSwap en='rows' th='แถว' />)</span>
               </p>
             )}
 
@@ -145,7 +216,7 @@ function ExpensesTable() {
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
-                <LanguageSwap en='Show less' th='แสดงลดลง'/>
+                <LanguageSwap en='Show less' th='แสดงลดลง' />
               </p>
             )}
           </div>
