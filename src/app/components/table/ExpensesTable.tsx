@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import moment from 'moment';
 
 import A2dIcon from '../icons/A2dIcon'
@@ -8,30 +8,12 @@ import A2dIcon from '../icons/A2dIcon'
 import LanguageSwap from '../LanguageSwap';
 import Modal from '../Modal';
 
-interface Expenses {
-  id: string;
-  type: string;
-  amount: number;
-  date: string;
-}
+import { Finance } from '@/app/types';
 
-function ExpensesTable() {
-  const [expenses, setExpenses] = useState<Expenses[]>([]);
+function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpenses: any }) {
   const [showAll, setShowAll] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [getId, setGetId] = useState('');
-
-  useEffect(() => {
-    const storedExpenses = localStorage.getItem('expenses');
-    if (storedExpenses) {
-      try {
-        const parsedExpenses = JSON.parse(storedExpenses);
-        setExpenses(parsedExpenses);
-      } catch (error) {
-        console.error('Error parsing stored expenses:', error);
-      }
-    }
-  }, []);
 
   const toggleModal = () => setIsModal((prev: boolean) => !prev);
 
@@ -144,9 +126,9 @@ function ExpensesTable() {
           </h2>
         </div>
         <div className='pt-2 space-y-0'>
-          {expenses.length > 0 ? (
+          {expenses?.length > 0 ? (
             showAll ? (
-              expenses.map((data) => (
+              expenses?.map((data) => (
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
@@ -175,7 +157,7 @@ function ExpensesTable() {
                 </div>
               ))
             ) : (
-              expenses.slice(0, 15).map((data) => (
+              expenses?.slice(0, 15).map((data) => (
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
@@ -208,25 +190,27 @@ function ExpensesTable() {
               <LanguageSwap en='No Expenses Yet.' th='ไม่มีข้อมูลรายจ่าย' />
             </p>
           )}
-          <div className='pt-4'>
-            {!showAll && expenses.length > 15 && (
+          {!showAll && expenses.length > 15 && (
+            <div className='pt-4'>
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
                 <LanguageSwap en='Show all' th='แสดงทั้งหมด' /> <span className='text-sm'>({expenses.length} <LanguageSwap en='rows' th='แถว' />)</span>
               </p>
-            )}
+            </div>
+          )}
 
-            {showAll && (
+          {showAll && (
+            <div className='pt-4'>
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
                 <LanguageSwap en='Show less' th='แสดงลดลง' />
               </p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

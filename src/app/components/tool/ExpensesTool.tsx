@@ -7,16 +7,9 @@ import { v4 as uuidv4 } from "uuid";
 import A2dIcon from '../icons/A2dIcon'
 
 import LanguageSwap from '../LanguageSwap';
+import { Finance } from '@/app/types';
 
-interface Expenses {
-  id: string;
-  type: string;
-  amount: number;
-  date: string;
-}
-
-function ExpensesTool() {
-  const [expenses, setExpenses] = useState<Expenses[]>([]);
+function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:any}) {
   const [selected, setSelected] = useState('');
   const [amount, setAmount] = useState('');
   const [language, setLanguage] = useState('');
@@ -29,20 +22,21 @@ function ExpensesTool() {
       }
     }
 
+    const fetchData = () => {
+      const storedExpenses = localStorage.getItem('expenses');
+      setExpenses(storedExpenses ? JSON.parse(storedExpenses) : []);
+    }
+
     languageCheck();
+    fetchData();
   }, [])
 
   const handleSubmit = (e: any) => {
     try {
       e.preventDefault();
 
-      const storedExpenses = localStorage.getItem('expenses');
-      let expensesHandle: Expenses[] = [];
-      if (storedExpenses) {
-        expensesHandle = JSON.parse(storedExpenses) as Expenses[];
-      }
 
-      const newExpenses: Expenses = {
+      const newExpenses: Finance = {
         id: uuidv4(),
         type: selected,
         amount: parseInt(amount),
@@ -50,11 +44,16 @@ function ExpensesTool() {
       }
 
       if (selected && newExpenses.amount > 0) {
-        newExpenses.type = selected
-        expensesHandle.unshift(newExpenses);
-        localStorage.setItem('expenses', JSON.stringify(expensesHandle))
+        const existingExpenses = localStorage.getItem('expenses');
+        const paraseExistingExpenses = existingExpenses ? JSON.parse(existingExpenses) : '';
+
+        const updatedExpenses = [newExpenses, ...expenses]
+
+        setExpenses(updatedExpenses)
+
+        localStorage.setItem('expenses', JSON.stringify(updatedExpenses))
+        
         setAmount('')
-        location.reload();
       } else {
         console.error('Please select an expense type and enter a valid amount.')
       }

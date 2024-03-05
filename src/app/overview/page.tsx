@@ -3,13 +3,11 @@
 import React, { useEffect, useState } from 'react'
 
 function OverviewPage() {
-  const [language, setLanguage] = useState('');
 
   useEffect(() => {
     const languageCheck = () => {
       const l = localStorage.getItem('language');
       if (l) {
-        setLanguage(l);
         document.title = `${l === 'en' ? 'Overview' : 'ภาพรวม'} - about2day`
       }
     }
