@@ -181,7 +181,7 @@ function BurgerMenu() {
                                     : 'สนับสนุน'}
                             </h2>
                             <a href="https://www.buymeacoffee.com/tellytawin" target='_blank'>
-                                <button className='py-2 w-full text-xl rounded bg-yellow-500 hover:bg-yellow-400 text-clr-dark'><i className="bi bi-cup-hot-fill mr-2"></i>buymeacoffee</button>
+                                <button className='py-2 w-full text-xl rounded bg-yellow-500 transition-colors hover:bg-yellow-400 text-clr-dark'><i className="bi bi-cup-hot-fill mr-2"></i>buymeacoffee</button>
                             </a>
                         </div>
                         <div className='flex flex-col space-y-1'>
