@@ -190,25 +190,27 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
               <LanguageSwap en='No Expenses Yet.' th='ไม่มีข้อมูลรายจ่าย' />
             </p>
           )}
-          <div className='pt-4'>
-            {!showAll && expenses.length > 15 && (
+          {!showAll && expenses.length > 15 && (
+            <div className='pt-4'>
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
                 <LanguageSwap en='Show all' th='แสดงทั้งหมด' /> <span className='text-sm'>({expenses.length} <LanguageSwap en='rows' th='แถว' />)</span>
               </p>
-            )}
+            </div>
+          )}
 
-            {showAll && (
+          {showAll && (
+            <div className='pt-4'>
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
                 <LanguageSwap en='Show less' th='แสดงลดลง' />
               </p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

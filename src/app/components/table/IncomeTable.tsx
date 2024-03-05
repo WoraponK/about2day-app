@@ -183,25 +183,28 @@ function IncomeTable({ income, setIncome }: { income: Finance[], setIncome: any 
               <LanguageSwap en='No Income Yet.' th='ไม่มีข้อมูลรายรับ' />
             </p>
           )}
-          <div className='pt-4'>
-            {!showAll && income.length > 15 && (
+          {!showAll && income.length > 15 && (
+            <div className='pt-4'>
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
                 <LanguageSwap en='Show all' th='แสดงทั้งหมด' /> <span className='text-sm'>({income.length} <LanguageSwap en='rows' th='แถว' />)</span>
               </p>
-            )}
 
-            {showAll && (
+            </div>
+          )}
+
+          {showAll && (
+            <div className='pt-4'>
               <p
                 className='text-clr-secondary-1 text-center cursor-pointer transition-colors hover:text-clr-secondary-2'
                 onClick={handleShowAllClick}
               >
                 <LanguageSwap en='Show less' th='แสดงลดลง' />
               </p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
