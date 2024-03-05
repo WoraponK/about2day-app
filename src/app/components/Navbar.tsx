@@ -97,14 +97,14 @@ function Navbar() {
                             {pathname == '/customize' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
                                     ? 'Customize'
-                                    : 'ของฉัน'}>
+                                    : 'จัดการ'}>
                                     <i className="bi bi-database-fill"></i>
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
                                         ? 'Customize'
-                                        : 'ของฉัน'}>
+                                        : 'จัดการ'}>
                                         <i className="bi bi-database"></i>
                                     </p>
                                 )

@@ -74,7 +74,7 @@ function BurgerMenu() {
                                         <span>
                                             {language === 'en'
                                                 ? 'Customize'
-                                                : 'ของฉัน'}
+                                                : 'จัดการ'}
                                         </span>
                                     </p>
                                 )
@@ -84,7 +84,7 @@ function BurgerMenu() {
                                             <span>
                                                 {language === 'en'
                                                     ? 'Customize'
-                                                    : 'ของฉัน'}
+                                                    : 'จัดการ'}
                                             </span>
                                         </p>
                                     )
