@@ -1,10 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import Swal from 'sweetalert2/src/sweetalert2.js';
+import Modal from '../components/Modal';
+import LanguageSwap from '../components/LanguageSwap';
 
 function SettingPage() {
   const [language, setLanguage] = useState('');
+  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     const languageCheck = () => {
@@ -24,16 +26,8 @@ function SettingPage() {
     location.reload();
   }
 
-  const modalDeleteAll = () => {
-    Swal.fire({
-      icon: 'warning',
-      title: `${language === 'en'
-        ? 'Want to delete all data ?'
-        : 'ต้องการล้างข้อมูลทั้งหมดใช่หรือไม่ ?'}`,
-      text: `${language === 'en'
-        ? 'If you have done this, It will not be possible to revert your "income and expenses" data.'
-        : 'ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูล "รายรับ-รายจ่าย" กลับมาได้'}`
-    })
+  const handleModalDeleteAll = () => {
+    setIsModal((prev: boolean) => !prev)
   }
 
   const LanguageSettingBox = () => (
@@ -77,16 +71,52 @@ function SettingPage() {
     </div>
   );
 
+  const InnerModal = () => (
+    <div className='space-y-4'>
+      <h3 className='text-2xl font-semibold text-center'>
+        <LanguageSwap
+          en='Want to delete all data ?'
+          th='ต้องการล้างข้อมูลทั้งหมดใช่หรือไม่ ?'
+        />
+      </h3>
+      <p className='text-lg text-center'>
+        <LanguageSwap
+          en='If you have done this, It will not be possible to revert your "income and expenses" data.'
+          th='ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูล "รายรับ-รายจ่าย" กลับมาได้'
+        />
+      </p>
+      <div className='flex justify-end space-x-2'>
+        <button
+          className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
+          onClick={handleDeleteAllSubmit}
+        >
+          <LanguageSwap en='Sure' th='ยืนยัน' />
+        </button>
+        <button
+          className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
+          onClick={handleModalDeleteAll}
+        >
+          <LanguageSwap en='Cancel' th='ยกเลิก' />
+        </button>
+      </div>
+    </div>
+  );
+
   const DeleteAllButton = () => (
     <>
       <button
-        onClick={modalDeleteAll}
+        onClick={handleModalDeleteAll}
         className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/90'
       >
         {language === 'en'
           ? 'Delelete All Data'
           : 'ล้างข้อมูลทั้งหมด'}
       </button>
+      {isModal && (
+        <Modal>
+          <InnerModal />
+        </Modal>
+      )}
     </>
   );
 
@@ -103,6 +133,7 @@ function SettingPage() {
   const handleDeleteAllSubmit = () => {
     localStorage.removeItem('expenses');
     localStorage.removeItem('income');
+    handleModalDeleteAll();
   }
 
   return (

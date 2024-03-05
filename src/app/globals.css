@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-@import '@sweetalert2/theme-dark/dark.css';
 
 .remove-arrow::-webkit-inner-spin-button,
 .remove-arrow::-webkit-outer-spin-button {
