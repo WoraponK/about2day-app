@@ -74,7 +74,7 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
 
   const InnerModal = () => (
     <div className='space-y-4'>
-      <h3 className='text-2xl font-semibold text-center'>
+      <h3 className='text-2xl font-semibold text-center uppercase'>
         <LanguageSwap
           en='Want to delete this data?'
           th='ต้องการลบรายการนี้ใช่หรือไม่ ?'

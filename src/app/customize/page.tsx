@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from 'react'
 
+// Components
+import AddCustomizeButton from './AddCustomizeButton'
+
 function CustomPage() {
 
   useEffect(() => {
@@ -16,7 +19,9 @@ function CustomPage() {
   }, [])
 
   return (
-    <div>CustomPage</div>
+    <div>
+      <AddCustomizeButton />
+    </div>
   )
 }
 

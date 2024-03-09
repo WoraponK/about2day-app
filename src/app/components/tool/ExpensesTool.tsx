@@ -89,7 +89,7 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
               />
               <label
                 htmlFor="ex-foods"
-                className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
+                className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
                 title={language === 'en' ? 'Foods' : 'อาหาร'}
               >
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
@@ -108,7 +108,7 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
               />
               <label
                 htmlFor="ex-gaming"
-                className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
+                className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
                 title={language === 'en' ? 'Gaming' : 'เกม'}
               >
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
@@ -127,7 +127,7 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
               />
               <label
                 htmlFor="ex-house"
-                className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
+                className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
                 title={language === 'en' ? 'House' : 'บ้าน'}
               >
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
@@ -146,7 +146,7 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
               />
               <label
                 htmlFor="ex-phone"
-                className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
+                className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
                 title={language === 'en' ? 'Phone' : 'มือถือ'}
               >
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
@@ -165,7 +165,7 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
               />
               <label
                 htmlFor="ex-shopping"
-                className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
+                className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
                 title={language === 'en' ? 'Shopping' : 'ช็อปปิ้ง'}
               >
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
@@ -184,7 +184,7 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
               />
               <label
                 htmlFor="ex-tools"
-                className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
+                className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary'
                 title={language === 'en' ? 'Tools' : 'เครื่องมือ'}
               >
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
@@ -205,7 +205,7 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
               />
               <span className='text-2xl'>฿</span>
             </label>
-            <button className='bg-clr-light text-clr-dark px-4 rounded-lg font-semibold transition-colors hover:bg-clr-secondary-1 hover:text-clr-light'>
+            <button className='bg-clr-light text-clr-dark px-4 rounded-lg font-semibold hover:bg-clr-secondary-1 hover:text-clr-light transition-all active:scale-95'>
               <LanguageSwap en='Add' th='เพิ่ม' />
             </button>
           </div>

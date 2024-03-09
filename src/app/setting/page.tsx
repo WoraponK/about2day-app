@@ -73,7 +73,7 @@ function SettingPage() {
 
   const InnerModal = () => (
     <div className='space-y-4'>
-      <h3 className='text-2xl font-semibold text-center'>
+      <h3 className='text-2xl font-semibold text-center uppercase'>
         <LanguageSwap
           en='Want to delete all data?'
           th='ต้องการล้างข้อมูลทั้งหมดใช่หรือไม่ ?'
