@@ -74,7 +74,7 @@ function CustomPage() {
   const formatDateString = (task: Task) => {
     const date = task.date;
     if (date) {
-      return moment(String(date)).format('DD/MM/YYYY')
+      return moment(String(date)).format('HH:mm:ss | DD/MM/YYYY')
     }
   }
 
@@ -195,7 +195,7 @@ function CustomPage() {
                     </li>
                     <li>
                       <label className='flex w-full space-x-2'>
-                        <span><LanguageSwap en='Date:' th='เวลา:' /></span>
+                        <span><LanguageSwap en='Created:' th='สร้างเมื่อ:' /></span>
                         <div
                           className='w-full bg-clr-gray-2 px-2 rounded focus:outline-none border-b border-clr-light cursor-not-allowed'
                         >
