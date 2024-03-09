@@ -128,7 +128,7 @@ function IncomeTable({ income, setIncome }: { income: Finance[], setIncome: any 
                     onClick={() => getIncomeId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
+                      <div className='h-full w-0 border-l-2 border-r-2 border-clr-secondary-1 transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
                     </div>
                     <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
@@ -157,7 +157,7 @@ function IncomeTable({ income, setIncome }: { income: Finance[], setIncome: any 
                     onClick={() => getIncomeId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
+                      <div className='h-full w-0 border-l-2 border-r-2 border-clr-secondary-1 transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
                     </div>
                     <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>

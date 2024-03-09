@@ -112,6 +112,25 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='transition-colors hover:text-clr-primary'>
+                        <Link href={'/todos'}>
+                            {pathname == '/todos' ? (
+                                <p className='flex items-center space-x-2' title={language === 'en'
+                                    ? 'Todos'
+                                    : 'สิ่งที่ต้องทำ'}>
+                                    <i className="bi bi-clipboard2-check-fill"></i>
+                                </p>
+                            )
+                                : (
+                                    <p className='flex items-center space-x-2' title={language === 'en'
+                                        ? 'Todos'
+                                        : 'สิ่งที่ต้องทำ'}>
+                                        <i className="bi bi-clipboard2-check"></i>
+                                    </p>
+                                )
+                            }
+                        </Link>
+                    </li>
+                    <li className='transition-colors hover:text-clr-primary'>
                         <Link href={'/overview'}>
                             {pathname == '/overview' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'

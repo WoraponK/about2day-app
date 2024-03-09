@@ -12,13 +12,20 @@ import { Finance } from '@/app/types';
 
 function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpenses: any }) {
   const [showAll, setShowAll] = useState(false);
-  const [isModal, setIsModal] = useState(false);
-  const [getId, setGetId] = useState('');
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [isDetailsModal, setIsDetailsModal] = useState(false);
+  const [getData, setGetData] = useState<Finance[]>([]);
 
-  const toggleModal = () => setIsModal((prev: boolean) => !prev);
+  const toggleDetailsModal = () => {
+    setIsDetailsModal(!isDetailsModal);
+  }
+
+  const toggleDeleteModal = () => {
+    setIsDeleteModal(!setIsDeleteModal);
+  }
 
   const handleShowAllClick = () => {
-    setShowAll((prevShowAll) => !prevShowAll)
+    setShowAll(!showAll)
   }
 
   const totalAmount = expenses.reduce((acc, item) => acc + item.amount, 0)
@@ -48,9 +55,9 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
     }
   }
 
-  const getExpensesId = (id: string) => {
-    toggleModal();
-    setGetId(id);
+  const getExpensesId = (data: Finance[]) => {
+    toggleDetailsModal();
+    setGetData(data);
   }
 
   const handleDelete = (id: string) => {
@@ -65,14 +72,42 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
         setExpenses(updatedExpenses);
         localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
 
-        toggleModal();
+        toggleDeleteModal();
       }
     } catch (e) {
       console.error(e);
     }
   }
 
-  const InnerModal = () => (
+  const InnerDetailsModal = () => (
+    <div className='space-y-4'>
+      <h3 className='text-2xl font-semibold text-center uppercase'>
+        <LanguageSwap
+          en='DETAILS'
+          th='รายละเอียด'
+        />
+      </h3>
+      <p className='text-lg text-center'>
+        <LanguageSwap
+          en='If you have done this, It will not be possible to revert your data.'
+          th='ถ้าหากทำการยืนยัน จะไม่สามารถแก้ไขข้อมูลกลับมาได้'
+        />
+      </p>
+      <div className='flex justify-between space-x-2'>
+        <div onClick={toggleDeleteModal} className='btn border-none bg-clr-light transition-colors hover:bg-clr-red text-2xl text-clr-red hover:text-clr-light'>
+          <i className="bi bi-trash translate-y-[2px]"></i>
+        </div>
+        <div
+          className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
+          onClick={toggleDetailsModal}
+        >
+          <LanguageSwap en='Cancel' th='ยกเลิก' />
+        </div>
+      </div>
+    </div>
+  );
+
+  const InnerDeleteModal = () => (
     <div className='space-y-4'>
       <h3 className='text-2xl font-semibold text-center uppercase'>
         <LanguageSwap
@@ -88,14 +123,8 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
       </p>
       <div className='flex justify-end space-x-2'>
         <button
-          className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
-          onClick={() => handleDelete(getId)}
-        >
-          <LanguageSwap en='Sure' th='ยืนยัน' />
-        </button>
-        <button
           className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
-          onClick={toggleModal}
+          onClick={toggleDeleteModal}
         >
           <LanguageSwap en='Cancel' th='ยกเลิก' />
         </button>
@@ -132,10 +161,9 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={() => getExpensesId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
+                      <div className='h-full w-0 border-l-2 border-r-2 border-clr-secondary-1 transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
                     </div>
                     <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
@@ -149,9 +177,14 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                       <p>{data.amount}฿</p>
                     </div>
                   </div>
-                  {isModal && (
+                  {isDetailsModal && (
                     <Modal>
-                      <InnerModal />
+                      <InnerDetailsModal />
+                    </Modal>
+                  )}
+                  {isDeleteModal && (
+                    <Modal>
+                      <InnerDeleteModal />
                     </Modal>
                   )}
                 </div>
@@ -161,10 +194,9 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={() => getExpensesId(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
+                      <div className='h-full w-0 border-l-2 border-r-2 border-clr-secondary-1 transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
                     </div>
                     <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
@@ -178,9 +210,14 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                       <p>{data.amount}฿</p>
                     </div>
                   </div>
-                  {isModal && (
+                  {isDetailsModal && (
                     <Modal>
-                      <InnerModal />
+                      <InnerDetailsModal />
+                    </Modal>
+                  )}
+                  {isDeleteModal && (
+                    <Modal>
+                      <InnerDeleteModal />
                     </Modal>
                   )}
                 </div>
