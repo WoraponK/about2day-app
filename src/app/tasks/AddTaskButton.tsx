@@ -66,7 +66,7 @@ function AddTaskButton({tasks, setTasks}: {tasks:Task[], setTasks:any}) {
 
     return (
         <>
-            <button onClick={toggleModal} className='transition-all active:scale-95 bg-clr-primary uppercase py-4 text-lg rounded-xl group cursor-pointer hover:bg-clr-primary/60 flex flex-col items-center space-y-2 font-semibold'>
+            <button onClick={toggleModal} className='transition-all active:scale-95 bg-clr-primary uppercase h-26 text-lg rounded-xl group cursor-pointer hover:bg-clr-primary/60 flex justify-center space-x-4 items-center space-y-2 font-semibold'>
                 <div>
                     <div className='block group-hover:hidden'>
                         <MoodIcon level={4} size={35} />
@@ -76,8 +76,7 @@ function AddTaskButton({tasks, setTasks}: {tasks:Task[], setTasks:any}) {
                     </div>
                 </div>
                 <div>
-                    <span className='block'><LanguageSwap en='Add' th='เพิ่ม' /> +</span>
-                    <span className='block'><LanguageSwap en='New Task' th='รายการใหม่' /></span>
+                    <span className='block'>+ <LanguageSwap en='Add New Task' th='เพิ่มรายการใหม่' /></span>
                 </div>
             </button>
             {isModal && (
