@@ -40,18 +40,24 @@ function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
         id: uuidv4(),
         type: selected,
         amount: parseInt(amount),
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        model: 'income'
       }
 
       if (selected && newIncome.amount > 0) {
         const existingIncome = localStorage.getItem('income');
-        const parseExistingIncome = existingIncome ? JSON.parse(existingIncome) : '';
+        const parseExistingIncome = existingIncome ? JSON.parse(existingIncome) : [];
+
+        const exisitingFinance = localStorage.getItem('finance');
+        const parseExistingFinance = exisitingFinance ? JSON.parse(exisitingFinance) : [];
 
         const updatedIncome = [newIncome, ...parseExistingIncome];
+        const updatedFinance = [newIncome, ...parseExistingFinance]
 
         setIncome(updatedIncome)
 
         localStorage.setItem('income', JSON.stringify(updatedIncome));
+        localStorage.setItem('finance', JSON.stringify(updatedFinance))
   
         setAmount('')
       } else {
@@ -79,7 +85,7 @@ function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
           <ul className='grid grid-cols-4 gap-2'>
             <li className='flex justify-center items-center'>
               <input type="radio" name="income" value={'in-people'} id='in-people' className='hidden peer' onChange={(e) => setSelected(e.target.value)} />
-              <label htmlFor="in-people" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'People' : 'คน'}>
+              <label htmlFor="in-people" className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'People' : 'คน'}>
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
                   <A2dIcon type='in-people' size={35} />
                 </div>
@@ -87,7 +93,7 @@ function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
             </li>
             <li className='flex justify-center items-center'>
               <input type="radio" name="income" value={'in-extra'} id='in-extra' className='hidden peer' onChange={(e) => setSelected(e.target.value)} />
-              <label htmlFor="in-extra" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'Extra' : 'พิเศษ'}>
+              <label htmlFor="in-extra" className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'Extra' : 'พิเศษ'}>
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
                   <A2dIcon type='in-extra' size={35} />
                 </div>
@@ -95,7 +101,7 @@ function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
             </li>
             <li className='flex justify-center items-center'>
               <input type="radio" name="income" value={'in-salary'} id='in-salary' className='hidden peer' onChange={(e) => setSelected(e.target.value)} />
-              <label htmlFor="in-salary" className='cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg transition-colors hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'Salary' : 'เงินเดือน'}>
+              <label htmlFor="in-salary" className='transition-all active:scale-95 cursor-pointer flex justify-center items-center h-14 w-full bg-clr-secondary bg-clr-gray-3 rounded-lg hover:bg-clr-gray-2 peer-checked:bg-clr-primary' title={language === 'en' ? 'Salary' : 'เงินเดือน'}>
                 <div className='relative object w-auto h-auto flex justify-center items-center'>
                   <A2dIcon type='in-salary' size={35} />
                 </div>
@@ -113,7 +119,7 @@ function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
                 required />
               <span className='text-2xl'>฿</span>
             </label>
-            <button className='bg-clr-light text-clr-dark px-4 rounded-lg font-semibold transition-colors hover:bg-clr-secondary-1 hover:text-clr-light'>
+            <button className='bg-clr-light text-clr-dark px-4 rounded-lg font-semibold transition-all hover:bg-clr-secondary-1 hover:text-clr-light active:scale-95'>
               <LanguageSwap en='Add' th='เพิ่ม' />
             </button>
           </div>

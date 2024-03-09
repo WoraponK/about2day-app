@@ -57,7 +57,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className={`flex justify-between items-center px-16 py-6 border-b border-clr-light/90 max-lg:px-8 max-sm:py-4 backdrop-blur-md z-50 sticky top-0 left-0 w-full transition duration-300 ease-in-out ${isNavHidden ? 'hidden' : ''}`}>
+            <nav className={`flex justify-between items-center px-16 py-4 border-b border-clr-light/90 max-lg:px-8 max-sm:py-2 backdrop-blur-md z-50 sticky top-0 left-0 w-full transition duration-300 ease-in-out ${isNavHidden ? 'hidden' : ''}`}>
                 <Link href={'/'}>
                     <div className='relative max-lg:w-[120px] w-[150px] h-[50px]'>
                         <Image
@@ -93,18 +93,18 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/customize'}>
-                            {pathname == '/customize' ? (
+                        <Link href={'/tasks'}>
+                            {pathname == '/tasks' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Customize'
-                                    : 'จัดการ'}>
+                                    ? 'Tasks'
+                                    : 'รายการ'}>
                                     <i className="bi bi-database-fill"></i>
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                        ? 'Customize'
-                                        : 'จัดการ'}>
+                                        ? 'Tasks'
+                                        : 'รายการ'}>
                                         <i className="bi bi-database"></i>
                                     </p>
                                 )
