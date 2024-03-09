@@ -35,6 +35,9 @@ function BurgerMenu() {
             {isBurger ? (
                 <div className={`fixed right-0 top-0 backdrop-blur-lg bg-clr-primary/60 h-screen opacity-0 w-0 transition-all duration-300 max-md:w-[400px] z-[999] max-md:opacity-100 max-md:flex max-md:flex-col max-sm:w-full`}>
                     <div onClick={handleBurger} className='flex justify-between items-center px-8 py-5 text-3xl max-sm:py-2'>
+                        <div>
+                            
+                        </div>
                         <HowBoutDayButton />
                         <div className='w-[40px] aspect-square flex justify-center items-center bg-clr-light/40 rounded-full transition-colors hover:bg-clr-light/75 cursor-pointer'>
                             <i className="bi bi-x translate-y-[2px]"></i>

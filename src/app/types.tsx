@@ -20,3 +20,8 @@ export interface Data {
     num: number;
     date: string;
 }
+
+export interface BoutDay {
+    hour: number;
+    minute: number;
+}
