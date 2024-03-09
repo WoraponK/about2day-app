@@ -3,9 +3,12 @@
 import React, { useEffect, useState } from 'react'
 
 // Components
-import AddCustomizeButton from './AddCustomizeButton'
+import AddTaskButton from './AddTaskButton'
+
+import { Task, Data } from '../types'
 
 function CustomPage() {
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
     const languageCheck = () => {
@@ -19,8 +22,8 @@ function CustomPage() {
   }, [])
 
   return (
-    <div>
-      <AddCustomizeButton />
+    <div className='grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-md:grid-cols-1'>
+      <AddTaskButton tasks={tasks} setTasks={setTasks}/>
     </div>
   )
 }

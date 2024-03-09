@@ -50,14 +50,17 @@ export default function Home() {
         </div>
         <div className="space-y-6">
           <div className="flex justify-end items-end text-3xl font-semibold">
-            <div className="w-3/4 flex justify-between bg-clr-accent py-1 px-4 rounded-xl max-lg:w-full">
+            <div className="w-3/4 flex justify-between bg-clr-accent py-1 px-4 rounded-xl">
               <h2 className="text-clr-secondary-1"><LanguageSwap en="Difference" th="ผลต่าง" /></h2>
-              {totalAmount >= 0 ? (
+              {totalAmount > 0 ? (
                 <h3 className="text-clr-yellow">
                   {totalAmount} <span>฿</span>
                 </h3>
-
-              ) : (
+              ): totalAmount == 0 ? (
+                <h3 className="text-clr-light">
+                  {totalAmount} <span>฿</span>
+                </h3>
+              ): (
                 <h3 className="text-clr-red">
                   {totalAmount} <span>฿</span>
                 </h3>

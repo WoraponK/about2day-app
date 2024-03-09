@@ -40,18 +40,24 @@ function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
         id: uuidv4(),
         type: selected,
         amount: parseInt(amount),
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        model: 'income'
       }
 
       if (selected && newIncome.amount > 0) {
         const existingIncome = localStorage.getItem('income');
-        const parseExistingIncome = existingIncome ? JSON.parse(existingIncome) : '';
+        const parseExistingIncome = existingIncome ? JSON.parse(existingIncome) : [];
+
+        const exisitingFinance = localStorage.getItem('finance');
+        const parseExistingFinance = exisitingFinance ? JSON.parse(exisitingFinance) : [];
 
         const updatedIncome = [newIncome, ...parseExistingIncome];
+        const updatedFinance = [newIncome, ...parseExistingFinance]
 
         setIncome(updatedIncome)
 
         localStorage.setItem('income', JSON.stringify(updatedIncome));
+        localStorage.setItem('finance', JSON.stringify(updatedFinance))
   
         setAmount('')
       } else {

@@ -93,18 +93,18 @@ function Navbar() {
                         </Link>
                     </li>
                     <li className='transition-colors hover:text-clr-primary'>
-                        <Link href={'/customize'}>
-                            {pathname == '/customize' ? (
+                        <Link href={'/tasks'}>
+                            {pathname == '/tasks' ? (
                                 <p className='flex items-center space-x-2' title={language === 'en'
-                                    ? 'Customize'
-                                    : 'จัดการ'}>
+                                    ? 'Tasks'
+                                    : 'รายการ'}>
                                     <i className="bi bi-database-fill"></i>
                                 </p>
                             )
                                 : (
                                     <p className='flex items-center space-x-2' title={language === 'en'
-                                        ? 'Customize'
-                                        : 'จัดการ'}>
+                                        ? 'Tasks'
+                                        : 'รายการ'}>
                                         <i className="bi bi-database"></i>
                                     </p>
                                 )

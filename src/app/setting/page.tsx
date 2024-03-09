@@ -81,8 +81,8 @@ function SettingPage() {
       </h3>
       <p className='text-lg text-center'>
         <LanguageSwap
-          en='If you have done this, It will not be possible to revert your "income and expenses" data.'
-          th='ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูล "รายรับ-รายจ่าย" กลับมาได้'
+          en='If you have done this, It will not be possible to revert your all data.'
+          th='ถ้าหากทำการยืนยัน จะไม่สามารถนำข้อมูลทั้งหมดกลับมาได้'
         />
       </p>
       <div className='flex justify-end space-x-2'>
@@ -133,6 +133,8 @@ function SettingPage() {
   const handleDeleteAllSubmit = () => {
     localStorage.removeItem('expenses');
     localStorage.removeItem('income');
+    localStorage.removeItem('finance');
+    localStorage.removeItem('tasks');
     handleModalDeleteAll();
   }
 

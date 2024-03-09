@@ -40,18 +40,24 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
         id: uuidv4(),
         type: selected,
         amount: parseInt(amount),
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        model: 'expenses'
       }
 
       if (selected && newExpenses.amount > 0) {
         const existingExpenses = localStorage.getItem('expenses');
-        const paraseExistingExpenses = existingExpenses ? JSON.parse(existingExpenses) : '';
+        const parseExistingExpenses = existingExpenses ? JSON.parse(existingExpenses) : [];
 
-        const updatedExpenses = [newExpenses, ...expenses]
+        const exisitingFinance = localStorage.getItem('finance');
+        const parseExistingFinance = exisitingFinance ? JSON.parse(exisitingFinance) : [];
+
+        const updatedExpenses = [newExpenses, ...parseExistingExpenses]
+        const updatedFinance = [newExpenses, ...parseExistingFinance]
 
         setExpenses(updatedExpenses)
 
         localStorage.setItem('expenses', JSON.stringify(updatedExpenses))
+        localStorage.setItem('finance', JSON.stringify(updatedFinance))
         
         setAmount('')
       } else {

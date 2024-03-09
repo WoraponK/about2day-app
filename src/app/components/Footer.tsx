@@ -48,8 +48,8 @@ function Footer() {
                             </Link>
                         </li>
                         <li className='transition-colors hover:text-clr-primary'>
-                            <Link href={'/customize'}>
-                                <LanguageSwap en='Customize' th='จัดการ' />
+                            <Link href={'/tasks'}>
+                                <LanguageSwap en='Tasks' th='รายการ' />
                             </Link>
                         </li>
                         <li className='transition-colors hover:text-clr-primary'>
