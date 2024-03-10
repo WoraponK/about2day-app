@@ -94,31 +94,6 @@ function BurgerMenu() {
                             </Link>
                         </li>
                         <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
-                            <Link href={'/todos'}>
-                                {pathname == '/todos' ? (
-                                    <p className='flex items-center space-x-2'>
-                                        <i className="bi bi-clipboard2-check-fill"></i>
-                                        <span>
-                                            {language === 'en'
-                                                ? 'Todos'
-                                                : 'สิ่งที่ต้องทำ'}
-                                        </span>
-                                    </p>
-                                )
-                                    : (
-                                        <p className='flex items-center space-x-2'>
-                                            <i className="bi bi-clipboard2-check"></i>
-                                            <span>
-                                                {language === 'en'
-                                                    ? 'Todos'
-                                                    : 'สิ่งที่ต้องทำ'}
-                                            </span>
-                                        </p>
-                                    )
-                                }
-                            </Link>
-                        </li>
-                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
                             <Link href={'/overview'}>
                                 {pathname == '/overview' ? (
                                     <p className='flex items-center space-x-2'>

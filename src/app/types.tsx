@@ -22,6 +22,7 @@ export interface Data {
 }
 
 export interface BoutDay {
+    id: string;
     hour: number;
     minute: number;
 }
