@@ -8,7 +8,7 @@ import Modal from '../components/Modal'
 import LanguageSwap from '../components/LanguageSwap';
 import { Task } from '../types';
 
-function AddTaskButton({tasks, setTasks}: {tasks:Task[], setTasks:any}) {
+function AddTaskButton({ tasks, setTasks }: { tasks: Task[], setTasks: any }) {
     const [isModal, setIsModal] = useState(false);
     const [language, setLanguage] = useState('');
     const [taskTitle, setTaskTitle] = useState('');
@@ -44,14 +44,14 @@ function AddTaskButton({tasks, setTasks}: {tasks:Task[], setTasks:any}) {
             }
 
             if (selected && taskTitle.length > 0) {
-               const existingTasks = localStorage.getItem('tasks'); 
-               const parseExistingTasks = existingTasks ? JSON.parse(existingTasks) : [];
+                const existingTasks = localStorage.getItem('tasks');
+                const parseExistingTasks = existingTasks ? JSON.parse(existingTasks) : [];
 
-               const updatedTasks = [newTask, ...parseExistingTasks];
+                const updatedTasks = [newTask, ...parseExistingTasks];
 
-               setTasks(updatedTasks)
+                setTasks(updatedTasks)
 
-               localStorage.setItem('tasks', JSON.stringify(updatedTasks))
+                localStorage.setItem('tasks', JSON.stringify(updatedTasks))
             } else {
                 console.error('Please select task type and enter a valid taks title.');
             }
@@ -138,17 +138,17 @@ function AddTaskButton({tasks, setTasks}: {tasks:Task[], setTasks:any}) {
                                 </li>
                             </ul>
                             <div className='flex justify-end space-x-2'>
-                                <button
-                                    className='btn border-none text-clr-light bg-clr-primary transitoin-colors hover:bg-clr-primary/80'
-                                >
-                                    <LanguageSwap en='Sure' th='ยืนยัน' />
-                                </button>
                                 <div
                                     className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
                                     onClick={toggleModal}
                                 >
                                     <LanguageSwap en='Cancel' th='ยกเลิก' />
                                 </div>
+                                <button
+                                    className='btn border-none text-clr-light bg-clr-primary transitoin-colors hover:bg-clr-primary/80'
+                                >
+                                    <LanguageSwap en='Sure' th='ยืนยัน' />
+                                </button>
                             </div>
                         </form>
                     </div>

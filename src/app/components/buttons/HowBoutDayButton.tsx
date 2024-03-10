@@ -52,11 +52,13 @@ function HowBoutDayButton() {
 
     return (
         <button
-            className='bg-clr-secondary-1 py-2 px-4 max-sm:py-1 max-sm:px-3 max-[408px]:p-2 text-lg rounded-full flex items-center  space-x-3 transition-all active:scale-95 hover:bg-clr-secondary-2 disabled:bg-clr-light/70 disabled:cursor-not-allowed disabled:active:scale-100'
+            className='bg-clr-secondary-1 py-2 px-4 max-sm:py-1 max-sm:px-3 text-lg rounded-full flex items-center space-x-2 max-md:space-x-0 transition-all active:scale-95 hover:bg-clr-secondary-2 disabled:bg-clr-light/70 disabled:cursor-not-allowed disabled:active:scale-100'
             disabled={isDisabled}
         >
-            <MoodIcon level={5} size={25} />
-            <span className='max-[408px]:hidden font-semibold'>
+            <div className='max-md:hidden'>
+                <MoodIcon level={5} size={25} />
+            </div>
+            <span className='font-semibold max-md:text-sm'>
                 {isDisabled ? (
                     <LanguageSwap
                         en={`Ready ${setHour.toString().padStart(2, '0')}:${setMinute.toString().padStart(2, '0')}`}
@@ -64,8 +66,8 @@ function HowBoutDayButton() {
                     />
                 ) : (
                     <LanguageSwap
-                        en='BoutDay'
-                        th='วันนี้เป็นไง'
+                        en='BoutDay?'
+                        th='วันนี้เป็นไง?'
                     />
                 )}
             </span>

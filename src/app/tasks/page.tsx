@@ -249,18 +249,18 @@ function CustomPage() {
                 </p>
                 <div className='flex justify-end'>
                   <div className='flex space-x-2'>
-                    <button
-                      onClick={() => handleDeleteTask(getTaskId)}
-                      className='btn border-none text-clr-light bg-clr-primary transitoin-colors hover:bg-clr-primary/80'
-                    >
-                      <LanguageSwap en='Sure' th='ยืนยัน' />
-                    </button>
                     <div
                       className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
                       onClick={toggleDeleteModal}
                     >
                       <LanguageSwap en='Cancel' th='ยกเลิก' />
                     </div>
+                    <button
+                      onClick={() => handleDeleteTask(getTaskId)}
+                      className='btn border-none text-clr-light bg-clr-primary transitoin-colors hover:bg-clr-primary/80'
+                    >
+                      <LanguageSwap en='Sure' th='ยืนยัน' />
+                    </button>
                   </div>
                 </div>
 

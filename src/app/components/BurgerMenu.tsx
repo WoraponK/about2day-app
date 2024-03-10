@@ -43,7 +43,7 @@ function BurgerMenu() {
                         </div>
                     </div>
                     <ul className='flex flex-col space-y-6 uppercase text-4xl md:hidden px-8 py-8'>
-                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
+                        <li className='transition-colors hover:text-clr-yellow' onClick={handleBurger}>
                             <Link href={'/'}>
                                 {pathname == '/' ? (
                                     <p className='flex items-center space-x-2'>
@@ -68,7 +68,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
+                        <li className='transition-colors hover:text-clr-yellow' onClick={handleBurger}>
                             <Link href={'/tasks'}>
                                 {pathname == '/tasks' ? (
                                     <p className='flex items-center space-x-2'>
@@ -93,7 +93,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
+                        <li className='transition-colors hover:text-clr-yellow' onClick={handleBurger}>
                             <Link href={'/overview'}>
                                 {pathname == '/overview' ? (
                                     <p className='flex items-center space-x-2'>
@@ -120,7 +120,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
+                        <li className='transition-colors hover:text-clr-yellow' onClick={handleBurger}>
                             <Link href={'/setting'}>
                                 {pathname == '/setting' ? (
                                     <p className='flex items-center space-x-2'>
@@ -147,7 +147,7 @@ function BurgerMenu() {
                                 }
                             </Link>
                         </li>
-                        <li className='transition-colors hover:text-clr-secondary-2' onClick={handleBurger}>
+                        <li className='transition-colors hover:text-clr-yellow' onClick={handleBurger}>
                             <Link href={'/about'}>
                                 {pathname == '/about' ? (
                                     <p className='flex items-center space-x-2'>
@@ -195,7 +195,7 @@ function BurgerMenu() {
                             <ul className='flex text-5xl space-x-6'>
                                 <li >
                                     <a
-                                        className='transition-colors hover:text-clr-primary h-fit' href="https://www.facebook.com/ggtellytawin/"
+                                        className='transition-colors hover:text-clr-yellow h-fit' href="https://www.facebook.com/ggtellytawin/"
                                         target='_blank'
                                         aria-label='Facebook: Tell'
                                     >
@@ -204,7 +204,7 @@ function BurgerMenu() {
                                 </li>
                                 <li >
                                     <a
-                                        className='transition-colors hover:text-clr-primary h-fit' href="https://www.instagram.com/telly_tawin/"
+                                        className='transition-colors hover:text-clr-yellow h-fit' href="https://www.instagram.com/telly_tawin/"
                                         target='_blank'
                                         aria-label='Instagram: telly_tawin'
                                     >
@@ -213,7 +213,7 @@ function BurgerMenu() {
                                 </li>
                                 <li >
                                     <a
-                                        className='transition-colors hover:text-clr-primary h-fit' href="https://github.com/WoraponK" target='_blank'
+                                        className='transition-colors hover:text-clr-yellow h-fit' href="https://github.com/WoraponK" target='_blank'
                                         aria-label='GitHub: WoraponK'
                                     >
                                         <i className="bi bi-github"></i>
@@ -221,7 +221,7 @@ function BurgerMenu() {
                                 </li>
                                 <li >
                                     <a
-                                        className='transition-colors hover:text-clr-primary h-fit' href="https://www.youtube.com/@WoraponKS"
+                                        className='transition-colors hover:text-clr-yellow h-fit' href="https://www.youtube.com/@WoraponKS"
                                         target='_blank'
                                         aria-label='Youtube: WoraponK'
                                     >

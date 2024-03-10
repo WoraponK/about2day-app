@@ -148,16 +148,16 @@ function SettingPage() {
       </p>
       <div className='flex justify-end space-x-2'>
         <button
-          className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
-          onClick={handleDeleteAllSubmit}
-        >
-          <LanguageSwap en='Sure' th='ยืนยัน' />
-        </button>
-        <button
           className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
           onClick={handleModalDeleteAll}
         >
           <LanguageSwap en='Cancel' th='ยกเลิก' />
+        </button>
+        <button
+          className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
+          onClick={handleDeleteAllSubmit}
+        >
+          <LanguageSwap en='Sure' th='ยืนยัน' />
         </button>
       </div>
     </div>
