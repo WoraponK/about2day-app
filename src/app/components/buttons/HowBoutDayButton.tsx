@@ -43,8 +43,6 @@ function HowBoutDayButton() {
         const currentHour = new Date().getHours();
         const currentMinute = new Date().getMinutes();
 
-        console.log(`${currentHour}:${currentMinute}`)
-
         if (currentHour < setHour && currentHour >= 0 || (currentHour == setHour && currentMinute < setMinute)) {
             return setIsDisabled(true)
         } else {
