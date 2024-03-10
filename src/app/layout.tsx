@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={kanit.className} suppressHydrationWarning={true}>
         <div className="bg-clr-dark text-clr-light min-h-screen">
           <Navbar />
-          <main className="py-16 px-24 max-xl:px-16 max-lg:px-8">
+          <main className="py-16 px-24 max-xl:px-16 max-lg:px-4">
               {children}
           </main>
           <Footer />

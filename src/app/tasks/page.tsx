@@ -175,7 +175,7 @@ function CustomPage() {
                           type="text"
                           name="task"
                           id="title"
-                          className='w-full bg-transparent px-2 focus:outline-none border-b border-clr-light'
+                          className='w-full rounded bg-transparent px-2 focus:outline-none border-b border-clr-light'
                           autoComplete='off'
                           placeholder={language === 'en' ? 'example_title' : 'ตัวอย่างหัวข้อ'}
                           value={titleObjectTaskId}
@@ -195,7 +195,7 @@ function CustomPage() {
                     </li>
                     <li>
                       <label className='flex w-full space-x-2'>
-                        <span><LanguageSwap en='Created:' th='สร้างเมื่อ:' /></span>
+                        <span className='w-[5.3rem]'><LanguageSwap en='Created:' th='สร้างเมื่อ:' /></span>
                         <div
                           className='w-full bg-clr-gray-2 px-2 rounded focus:outline-none border-b border-clr-light cursor-not-allowed'
                         >

@@ -12,13 +12,26 @@ import { Finance } from '@/app/types';
 
 function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpenses: any }) {
   const [showAll, setShowAll] = useState(false);
-  const [isModal, setIsModal] = useState(false);
-  const [getId, setGetId] = useState('');
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+  const [isDetailsModal, setIsDetailsModal] = useState(false);
+  const [getData, setGetData] = useState<Finance[]>([]);
+  const [getOnlyId, setGetOnlyId] = useState('');
 
-  const toggleModal = () => setIsModal((prev: boolean) => !prev);
+  const toggleDetailsModal = () => {
+    setIsDetailsModal(!isDetailsModal);
+  }
+
+  const toggleDeleteModal = () => {
+    try {
+      toggleDetailsModal();
+      setIsDeleteModal(!isDeleteModal)
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   const handleShowAllClick = () => {
-    setShowAll((prevShowAll) => !prevShowAll)
+    setShowAll(!showAll)
   }
 
   const totalAmount = expenses.reduce((acc, item) => acc + item.amount, 0)
@@ -29,7 +42,13 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
     }
   }
 
-  const convertTypeToName = (type: string) => {
+  const formatFullDate = (value: string) => {
+    if (value) {
+      return moment(String(value)).format('HH:mm:ss | DD/MM/YYYY')
+    }
+  }
+
+  const convertTypeToName = (type: any) => {
     switch (type) {
       case 'ex-foods':
         return <LanguageSwap en='Foods' th='อาหาร' />
@@ -43,18 +62,23 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
         return <LanguageSwap en='House' th='บ้าน' />
       case 'ex-phone':
         return <LanguageSwap en='Phone' th='มือถือ' />
+      case 'expenses':
+        return <LanguageSwap en='Expenses' th='รายจ่าย' />
       default:
         return <LanguageSwap en='Null' th='ว่าง' />
     }
   }
 
-  const getExpensesId = (id: string) => {
-    toggleModal();
-    setGetId(id);
+  const getObjectData = (id: string) => {
+    toggleDetailsModal();
+    setGetOnlyId(id);
+    const array = expenses.filter((data) => data.id === id)
+    setGetData(array);
   }
 
   const handleDelete = (id: string) => {
     try {
+      toggleDetailsModal();
       const expensesIndex = expenses.findIndex((inc) => inc.id === id);
 
       if (expensesIndex !== -1) {
@@ -65,14 +89,80 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
         setExpenses(updatedExpenses);
         localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
 
-        toggleModal();
+        toggleDeleteModal();
+        setIsDetailsModal(false)
       }
     } catch (e) {
       console.error(e);
     }
   }
 
-  const InnerModal = () => (
+  const InnerDetailsModal = ({ data }: { data: Finance[] }) => (
+    <div className='space-y-4'>
+      <h3 className='text-2xl font-semibold text-center uppercase'>
+        <LanguageSwap
+          en='DETAILS'
+          th='รายละเอียด'
+        />
+      </h3>
+      <ul className='space-y-4 text-lg'>
+        <li>
+          <label className='flex w-full space-x-2'>
+            <span><LanguageSwap en='Model:' th='ประเภท:' /></span>
+            <div
+              className='w-full bg-clr-gray-2 px-2 rounded focus:outline-none border-b border-clr-light cursor-not-allowed'
+            >
+              <span className='text-clr-light/80'>{convertTypeToName(data[0].model)}</span>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label className='flex w-full space-x-2'>
+            <span><LanguageSwap en='Type:' th='ชนิด:' /></span>
+            <div
+              className='w-full bg-clr-gray-2 px-2 rounded focus:outline-none border-b border-clr-light cursor-not-allowed'
+            >
+              <span className='text-clr-light/80'>{convertTypeToName(data[0].type)}</span>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label className='flex w-full space-x-2'>
+            <span><LanguageSwap en='Amount:' th='จำนวน:' /></span>
+            <div
+              className='w-full bg-clr-gray-2 px-2 rounded focus:outline-none border-b border-clr-light cursor-not-allowed'
+            >
+              <span className='text-clr-light/80'>{data[0].amount} ฿</span>
+            </div>
+          </label>
+        </li>
+        <li>
+          <label className='flex w-full space-x-2'>
+            <span className='w-[5.3rem]'><LanguageSwap en='Created:' th='สร้างเมื่อ:' /></span>
+            <div
+              className='w-full bg-clr-gray-2 px-2 rounded focus:outline-none border-b border-clr-light cursor-not-allowed'
+            >
+              <span className='text-clr-light/80'>{formatFullDate(data[0].date)}</span>
+            </div>
+          </label>
+        </li>
+      </ul>
+
+      <div className='flex justify-between space-x-2'>
+        <div onClick={toggleDeleteModal} className='btn border-none bg-clr-light transition-colors hover:bg-clr-red text-2xl text-clr-red hover:text-clr-light'>
+          <i className="bi bi-trash translate-y-[2px]"></i>
+        </div>
+        <div
+          className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
+          onClick={toggleDetailsModal}
+        >
+          <LanguageSwap en='Cancel' th='ยกเลิก' />
+        </div>
+      </div>
+    </div>
+  );
+
+  const InnerDeleteModal = () => (
     <div className='space-y-4'>
       <h3 className='text-2xl font-semibold text-center uppercase'>
         <LanguageSwap
@@ -89,13 +179,13 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
       <div className='flex justify-end space-x-2'>
         <button
           className='btn border-none text-clr-light bg-clr-primary transition-colors hover:bg-clr-primary/80'
-          onClick={() => handleDelete(getId)}
+          onClick={() => handleDelete(getOnlyId)}
         >
           <LanguageSwap en='Sure' th='ยืนยัน' />
         </button>
         <button
           className='btn border-none text-clr-light bg-clr-red transition-colors hover:bg-clr-red/80'
-          onClick={toggleModal}
+          onClick={toggleDeleteModal}
         >
           <LanguageSwap en='Cancel' th='ยกเลิก' />
         </button>
@@ -122,7 +212,7 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
             <LanguageSwap en='Date' th='วันที่' />
           </h2>
           <h2>
-            <LanguageSwap en='Amount' th='ราคา' />
+            <LanguageSwap en='Amount' th='จำนวน' />
           </h2>
         </div>
         <div className='pt-2 space-y-0'>
@@ -132,10 +222,10 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={() => getExpensesId(data.id)}
+                    onClick={() => getObjectData(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
+                      <div className='h-full w-0 border-l-2 border-r-2 border-clr-secondary-1 transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
                     </div>
                     <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
@@ -149,11 +239,6 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                       <p>{data.amount}฿</p>
                     </div>
                   </div>
-                  {isModal && (
-                    <Modal>
-                      <InnerModal />
-                    </Modal>
-                  )}
                 </div>
               ))
             ) : (
@@ -161,10 +246,10 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                 <div key={data.id}>
                   <div
                     className=' space-y-1 group hover:bg-clr-gray-1 rounded cursor-pointer hover:text-clr relative'
-                    onClick={() => getExpensesId(data.id)}
+                    onClick={() => getObjectData(data.id)}
                   >
                     <div className='absolute flex justify-center items-center w-full h-full opacity-0 transition-all group-hover:opacity-100'>
-                      <div className='h-[2px] w-0 bg-clr-red transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
+                      <div className='h-full w-0 border-l-2 border-r-2 border-clr-secondary-1 transition-all duration-500 group-hover:w-full relative flex justify-center items-center'>
                       </div>
                     </div>
                     <div className='grid grid-cols-3 justify-items-center pb-1 items-end transition-all group-hover:opacity-50'>
@@ -178,11 +263,6 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
                       <p>{data.amount}฿</p>
                     </div>
                   </div>
-                  {isModal && (
-                    <Modal>
-                      <InnerModal />
-                    </Modal>
-                  )}
                 </div>
               ))
             )) : (
@@ -190,6 +270,7 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
               <LanguageSwap en='No Expenses Yet.' th='ไม่มีข้อมูลรายจ่าย' />
             </p>
           )}
+
           {!showAll && expenses.length > 15 && (
             <div className='pt-4'>
               <p
@@ -213,7 +294,23 @@ function ExpensesTable({ expenses, setExpenses }: { expenses: Finance[], setExpe
           )}
         </div>
       </div>
+      {
+        isDetailsModal && (
+          <Modal>
+            <InnerDetailsModal data={getData} />
+          </Modal>
+        )
+      }
+
+      {
+        isDeleteModal && (
+          <Modal>
+            <InnerDeleteModal />
+          </Modal>
+        )
+      }
     </div>
+
   )
 }
 
