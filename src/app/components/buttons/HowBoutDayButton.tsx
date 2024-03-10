@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 import MoodIcon from '../icons/MoodIcon'
+import LanguageSwap from '../LanguageSwap';
 
 function HowBoutDayButton() {
     const [language, setLanguage] = useState('');
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [setHour, isSetHour] = useState(0);
+    const [setMinute, isSetMinute] = useState(0)
 
     useEffect(() => {
         const languageCheck = () => {
@@ -15,18 +18,39 @@ function HowBoutDayButton() {
         }
 
         const updateButtonState = () => {
-            const currentHour = new Date().getHours();
-            const currentMinute = new Date().getMinutes();
+            const time = localStorage.getItem('settime');
+            if (time) {
+                const parseTime = JSON.parse(time);
 
-            setIsDisabled(currentHour < 22 || (currentHour === 22 && currentMinute >= 0) || currentHour >= 0)
+                setTime(parseTime.hour, parseTime.minute);
+                IsDisabledBoolean(parseTime.hour, parseTime.minute);
+            }
         }
 
         languageCheck();
         updateButtonState();
 
-        const intervalId = setInterval(updateButtonState, 60000);
+        const intervalId = setInterval(updateButtonState, 30000);
         return () => clearInterval(intervalId);
     }, [])
+
+    const setTime = (h: number, m: number) => {
+        isSetHour(h);
+        isSetMinute(m);
+    }
+
+    const IsDisabledBoolean = (setHour: number, setMinute: number) => {
+        const currentHour = new Date().getHours();
+        const currentMinute = new Date().getMinutes();
+
+        console.log(`${currentHour}:${currentMinute}`)
+
+        if (currentHour < setHour && currentHour >= 0 || (currentHour == setHour && currentMinute < setMinute)) {
+            return setIsDisabled(true)
+        } else {
+            return setIsDisabled(false)
+        }
+    }
 
     return (
         <button
@@ -35,9 +59,17 @@ function HowBoutDayButton() {
         >
             <MoodIcon level={5} size={25} />
             <span className='max-[408px]:hidden font-semibold'>
-                {language === 'en'
-                    ? 'BoutDay?'
-                    : 'วันนี้เป็นไง?'}
+                {isDisabled ? (
+                    <LanguageSwap
+                        en={`Ready ${setHour.toString().padStart(2, '0')}:${setMinute.toString().padStart(2, '0')}`}
+                        th={`พร้อม ${setHour.toString().padStart(2, '0')}:${setMinute.toString().padStart(2, '0')}`}
+                    />
+                ) : (
+                    <LanguageSwap
+                        en='BoutDay'
+                        th='วันนี้เป็นไง'
+                    />
+                )}
             </span>
         </button>
     )

@@ -12,7 +12,7 @@ import IncomeTable from "./components/table/IncomeTable";
 
 import LanguageSwap from "./components/LanguageSwap";
 
-import { Finance } from "./types";
+import { Finance, BoutDay } from "./types";
 
 export default function Home() {
   const [expenses, setExpenses] = useState<Finance[]>([])
@@ -35,8 +35,8 @@ export default function Home() {
 
     const checkBoutDayTime = () => {
       const existingBoutDay = localStorage.getItem('settime');
-      const defaultTime = {
-        hour: 20, 
+      const defaultTime: BoutDay = {
+        hour: 22, 
         minute: 0
       }
       
