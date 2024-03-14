@@ -48,16 +48,11 @@ function IncomeTool({income, setIncome}: {income:Finance[], setIncome:any}) {
         const existingIncome = localStorage.getItem('income');
         const parseExistingIncome = existingIncome ? JSON.parse(existingIncome) : [];
 
-        const exisitingFinance = localStorage.getItem('finance');
-        const parseExistingFinance = exisitingFinance ? JSON.parse(exisitingFinance) : [];
-
         const updatedIncome = [newIncome, ...parseExistingIncome];
-        const updatedFinance = [newIncome, ...parseExistingFinance]
 
         setIncome(updatedIncome)
 
         localStorage.setItem('income', JSON.stringify(updatedIncome));
-        localStorage.setItem('finance', JSON.stringify(updatedFinance))
   
         setAmount('')
       } else {

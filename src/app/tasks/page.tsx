@@ -115,12 +115,25 @@ function CustomPage() {
 
   const shouldShowSubmitButton = titleObjectTaskId !== originalTitle;
 
+  // AMOUNT TASK
   const AmountInnerTask = ({ task }: { task: Task }) => (
-    <div>
-      AmountInnerTask {task.id}
+    <div className='grid grid-cols-[80%_20%] h-full space-x-2'>
+      <div className='bg-clr-gray-1 p-2 h-full rounded-lg flex flex-col justify-center items-center space-y-1'>
+        <h4 className='text-5xl font-bold'>2</h4>
+        <span className='text-sm'><LanguageSwap en='Counts' th='ครั้ง'/></span>
+      </div>
+      <div className='grid grid-cols-1 space-y-2'>
+        <button className='bg-clr-primary rounded-lg transition-all hover:bg-clr-primary/60 active:scale-95'>
+          <span className='text-lg font-semibold'>+ 1</span>
+        </button>
+        <button className='bg-clr-secondary-1 rounded-lg transition-all hover:bg-clr-secondary-1/60 active:scale-95'>
+          <span className='text-lg font-semibold'>- 1</span>
+        </button>
+      </div>
     </div>
   );
 
+  // LEVEL TASK
   const LevelInnerTask = ({ task }: { task: Task }) => (
     <div>
       LevelInnerTask {task.id}
