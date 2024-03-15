@@ -81,7 +81,7 @@ function Footer() {
                     </div>
                     <div className='flex flex-col space-y-1'>
                         <h2 className='text-2xl text-clr-light/90'>
-                            <LanguageSwap en='Social' th='โซเขียล' />
+                            <LanguageSwap en='Social' th='โซเชียล' />
                         </h2>
                         <ul className='flex text-3xl space-x-4'>
                             <li >
