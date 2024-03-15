@@ -48,16 +48,11 @@ function ExpensesTool({expenses, setExpenses}: {expenses:Finance[], setExpenses:
         const existingExpenses = localStorage.getItem('expenses');
         const parseExistingExpenses = existingExpenses ? JSON.parse(existingExpenses) : [];
 
-        const exisitingFinance = localStorage.getItem('finance');
-        const parseExistingFinance = exisitingFinance ? JSON.parse(exisitingFinance) : [];
-
         const updatedExpenses = [newExpenses, ...parseExistingExpenses]
-        const updatedFinance = [newExpenses, ...parseExistingFinance]
 
         setExpenses(updatedExpenses)
 
         localStorage.setItem('expenses', JSON.stringify(updatedExpenses))
-        localStorage.setItem('finance', JSON.stringify(updatedFinance))
         
         setAmount('')
       } else {

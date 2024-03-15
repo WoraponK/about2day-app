@@ -6,6 +6,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+import NextTopLoader from "nextjs-toploader";
+
 import favicon from '/public/images/favicon.ico'
 
 const kanit = Kanit(
@@ -34,10 +36,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={kanit.className} suppressHydrationWarning={true}>
+        <NextTopLoader
+          color="#865DFF"
+          shadow="0 0 10px #865DFF,0 0 5px #865DFF"
+          showSpinner={false}
+        />
         <div className="bg-clr-dark text-clr-light min-h-screen">
           <Navbar />
           <main className="py-16 px-24 max-xl:px-16 max-lg:px-4">
-              {children}
+            {children}
           </main>
           <Footer />
         </div>
